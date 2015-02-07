@@ -42,8 +42,8 @@ recognition.onresult = function(event){
       else if (["love", "laugh"].indexOf(word) != -1) word = "left";
       if (["up", "down", "right", "left"].indexOf(word) != -1) {
         console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
+        batchCommands.push(word);
       }
-      batchCommands.push(word);
     }
 }
 
