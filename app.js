@@ -45,18 +45,18 @@ var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
 //     command: "left"         //TODO: add game server id to be able to launch multiple instance at the same time.
 // });
 
-myFirebaseRef.on("child_added", function(command) {
+myFirebaseRef.child('command').on("child_added", function(command) {
     // alert(snapshot.val());  // Alerts "San Francisco"
     commandStack[command.val().command]++;
 });
 
 var aggregateCommand = function () {
+    console.log("heartbeat");
     var max = "left";
     for (var key in commandStack){
         if (commandStack[key] > commandStack[max])
             max = key;
     }
-    resultCommand = commandStack[max];
     commandStack = {
         "left" : 0,
         "right" : 0,
@@ -64,7 +64,7 @@ var aggregateCommand = function () {
         "down": 0
     };
     myFirebaseRef.set({
-        serverCommand: resultCommand //TODO: add game server id to be able to launch multiple instance at the same time.
+        serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
     });
 }
 
