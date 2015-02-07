@@ -342,8 +342,10 @@ GameManager.prototype.positionsEqual = function (first, second) {
 };
 
 GameManager.prototype.toAPIObject = function() {
+  console.log(this.previousGrid);
+  console.log(this.grid);
   return {
-    'cells': this.grid.toAPIObject(),
+    'cells': this.previousGrid,
     'score': this.score,
     'over': this.over,
     'won': this.won,
