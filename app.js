@@ -78,41 +78,42 @@ var commandStack = {
 // });
 
 io.on('connection', function(socket){
-    socket.emit('gameStates', state);
     socket.on('clientCommand', function (data) {
-        commandStack[data.command]++;
+        if (Date.now() - data.timestamp < 1000)
+            commandStack[data.command]++;
     });
-    var aggregateCommand = function () {
-        console.log("heartbeat");
-        var max = "left";
-        for (var key in commandStack){
-            if (commandStack[key] > commandStack[max])
-                max = key;
-        }
-        if (commandStack[max] == 0) return;
-        commandStack = {
-            "left" : 0,
-            "right" : 0,
-            "up" : 0,
-            "down": 0
-        };
-        // console.log(max);
-
-        socket.broadcast.emit('serverCommand', {command: max});
-
-        // myFirebaseRef.child("serverCommand").push(max);
-        // myFirebaseRef.set({
-        //     serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
-        // });
-    }
-
-    setInterval(aggregateCommand, 2000);  
 
     socket.on('gameStates', function(data) {
-        state = data;
+        state = data.state;
         socket.broadcast.emit('gameStates', data);
     });
 });
+
+var aggregateCommand = function () {
+    console.log("heartbeat");
+    var max = "left";
+    for (var key in commandStack){
+        if (commandStack[key] > commandStack[max])
+            max = key;
+    }
+    if (commandStack[max] == 0) return;
+    console.log(commandStack);
+    // console.log(max);
+    io.emit('serverCommand', {command: max, choices: commandStack});
+    commandStack = {
+        "left" : 0,
+        "right" : 0,
+        "up" : 0,
+        "down": 0
+    };
+
+    // myFirebaseRef.child("serverCommand").push(max);
+    // myFirebaseRef.set({
+    //     serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
+    // });
+}
+
+setInterval(aggregateCommand, 3000);
 
 
 // io.on('gameStates', function(data) {
