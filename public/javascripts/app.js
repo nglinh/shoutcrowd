@@ -26,7 +26,7 @@ function updateHyp(hyp) {
 // This updates the UI when the app might get ready
 // Only when both recorder and recognizer are ready do we enable the buttons
 function updateUI() {
-	if (recorderReady && recognizerReady) 
+	if (recorderReady && recognizerReady)
 		startRecording();
 };
 // This is just a logging window where we display the status
@@ -35,9 +35,9 @@ function updateStatus(newStatus) {
 };
 // A not-so-great recording indicator
 function displayRecording(display) {
-	if (display) 
+	if (display)
 		document.getElementById('recording-indicator').innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-	else 
+	else
 		document.getElementById('recording-indicator').innerHTML = "";
 };
 // Callback function once the user authorises access to the microphone
@@ -45,13 +45,13 @@ function displayRecording(display) {
 function startUserMedia(stream) {
 	var input = audioContext.createMediaStreamSource(stream);
 	// Firefox hack https://support.mozilla.org/en-US/questions/984179
-	window.firefox_audio_hack = input; 
+	window.firefox_audio_hack = input;
 	var audioRecorderConfig = {errorCallback: function(x) {
 		updateStatus("Error from recorder: " + x);
 	}};
 	recorder = new AudioRecorder(input, audioRecorderConfig);
 	// If a recognizer is ready, we pass it to the recorder
-	if (recognizer) 
+	if (recognizer)
 		recorder.consumers = [recognizer];
 	recorderReady = true;
 	updateUI();
@@ -83,7 +83,7 @@ var recognizerReady = function() {
 // 		newElt.value=grammarIds[i].id;
 // 		newElt.innerHTML = grammarIds[i].title;
 // 		selectTag.appendChild(newElt);
-// 	}                          
+// 	}
 // };
 // This adds a grammar from the grammars array
 // We add them one by one and call it again as
@@ -156,7 +156,7 @@ try {
 } catch (e) {
 	updateStatus("Error initializing Web Audio browser");
 }
-if (navigator.getUserMedia) 
+if (navigator.getUserMedia)
 	navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
 		updateStatus("No live audio input in this browser");
 	});
