@@ -42,13 +42,19 @@ recognition.onresult = function(event){
       else if (["love", "laugh"].indexOf(word) != -1) word = "left";
       if (["up", "down", "right", "left"].indexOf(word) != -1) {
         console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
-        batchCommands.push(word);
+        if (batchCommands.length < 7 && event.results[resultsLength-1][resultArrayLength-1].confidence > 0.6)
+          batchCommands.push(word);
       }
     }
 }
+var commandCnt = 0;
 
 var compressCommand = function() {
-  if (batchCommands.length == 0) return;
+  if (batchCommands.length == commandCnt) {
+    batchCommands = [];
+    commandCnt = 0;
+    return;
+  }
   batchCommands = batchCommands.sort();
   var i;
   var maxCnt = 0;
@@ -66,6 +72,7 @@ var compressCommand = function() {
     }
   }
   batchCommands = [];
+  commandCnt = batchCommands.length;
 
   //push to the server
   firebase.child("commands").push(maxCommand);
@@ -73,7 +80,7 @@ var compressCommand = function() {
   return maxCommand;
 }
 
-setInterval(compressCommand, 1000);
+setInterval(compressCommand, 1500);
 
 // console.log("AK");
 // speech error handling

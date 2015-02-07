@@ -76,9 +76,7 @@ var aggregateCommand = function () {
         "down": 0
     };
     // console.log(max);
-    myFirebaseRef.child("serverCommand").set({
-        command: max
-    });
+    myFirebaseRef.child("serverCommand").push(max);
     // myFirebaseRef.set({
     //     serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
     // });
