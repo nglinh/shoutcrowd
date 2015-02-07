@@ -13,6 +13,8 @@ var landing = require('./routes/landing');
 var presenter = require('./routes/presenter');
 var fa = require('./routes/fa');
 var main = require('./routes/main');
+var home = require('./routes/home');
+
 //var main= require('./routes/main');
 
 var app = express();
@@ -41,6 +43,8 @@ app.use('/landing', landing);
 app.use('/presenter', presenter);
 app.use('/fa', fa);
 app.use('/main', main);
+app.use('/home', home);
+
 //app.use('/main', main);
 
 /// catch 404 and forward to error handler
