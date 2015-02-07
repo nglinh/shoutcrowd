@@ -288,7 +288,3 @@ gameStateRef.set(templateMessage);
 // 		lastRandomTile: {x: 0, y: 2, value: 2}
 // 		}
 //     });
-
-=======
-
->>>>>>> ed61c5b6e3d8fb3f726369c71bdc8fc82f32e9f8
