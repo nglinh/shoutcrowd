@@ -1,3 +1,4 @@
+var firebase = new Firebase("https://fbhack.firebaseio.com"); // firebase ref
 // new instance of speech recognition
 var recognition = new webkitSpeechRecognition();
 var shouldPickUpCommand = true;
@@ -35,13 +36,11 @@ recognition.onresult = function(event){
     console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
     if (event.results[resultsLength-1][resultArrayLength-1].confidence > 0.5) {
       var word = event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ')[event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ').length-1];
-
       if (["dawn", "don", "dan", "dont", "now", "dial", "don't", "dump"].indexOf(word) != -1) word = "down";
       else if (["op", "app", "pup"].indexOf(word) != -1) word = "up";
       else if (["rice", "write", "writes", "rights", "rite", "bright"].indexOf(word) != -1) word = "right";
       else if (["love", "laugh"].indexOf(word) != -1) word = "left";
       if (["up", "down", "right", "left"].indexOf(word) != -1) {
-        // TODO JZ: Pushing the command to the server
         console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
       }
       batchCommands.push(word);
@@ -66,7 +65,9 @@ var compressCommand = function() {
     }
   }
   batchCommands = [];
-  //TODO: logic to send to firebase
+
+  //push to the server
+  firebase.child("commands").push(maxCommand);
   
   return maxCommand;
 }
@@ -80,7 +81,9 @@ recognition.onerror = function(event){
     console.log(event);
 }
 
-
-// TODO JZ: write function to wait for response from server
-// Use Firebase?
-// Use the forceUpdate function on GameManager
+// listen for changes and use the forceUpdate function on GameManage
+firebase.child("gameStates").on("value", function(snapshot){
+    GameManager.prototype.forceUpdate(snapshot.val);
+  }, function (errorObject){
+    console.log("failed to get new gameState: " + errorObject.code);
+});
