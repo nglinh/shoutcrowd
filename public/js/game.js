@@ -1,8 +1,8 @@
 
 // Wait till the browser is ready to render the game (avoids glitches)
-window.requestAnimationFrame(function () {
+// window.requestAnimationFrame(function () {
 
-  window.gameManager = new GameManager(4, VoiceInputManager, HTMLActuator, LocalStorageManager);
+//   window.gameManager = new GameManager(4, VoiceInputManager, HTMLActuator, LocalStorageManager);
 
   // setTimeout(function() {
 
@@ -40,6 +40,6 @@ window.requestAnimationFrame(function () {
   //     gameManager.moveRight();
   //   }
   // };
-});
+// });
 
 

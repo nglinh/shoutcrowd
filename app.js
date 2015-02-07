@@ -59,7 +59,6 @@ myFirebaseRef.child('commands').on("child_added", function(command) {
         console.log(command.val());
     }
     // alert(snapshot.val());  // Alerts "San Francisco"
-    
 });
 
 var aggregateCommand = function () {

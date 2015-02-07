@@ -87,30 +87,30 @@ GameManager.prototype.relayAddTile = function () {
 }
 
 GameManager.prototype.forceUpdate = function(gameDict) {
-  if (this.storageManager.getBestScore() < gameDict['score']) {
-    this.storageManager.setBestScore(score);
+  console.log(gameDict);
+  if (this.storageManager.getBestScore() < gameDict.score) {
+    this.storageManager.setBestScore(gameDict.score);
   }
 
   var gridObject = new Grid(this.size);
-  var cells = gameDict['cells'];
+  var cells = gameDict.cells;
   for (var i = 0; i < this.size; i++) {
     for (var j = 0; j < this.size; j++) {
-      if (cells[i][j]) {
+      if (cells[i][j] && cells[i][j] > 0) {
         var tile = new Tile({x: i, y: j}, cells[i][j]);
         gridObject.insertTile(tile);
       }
     }
   }
 
-  var tile = gameDict['lastRandomTile'] ? new Tile({x: gameDict['lastRandomTile']['x'], y: gameDict['lastRandomTile']['y']}, gameDict['lastRandomTile']['value']) : null;
-  console.log(tile);
+  var tile = gameDict.lastRandomTile ? new Tile({x: gameDict.lastRandomTile.x, y: gameDict.lastRandomTile.y}, gameDict.lastRandomTile.value) : null;
 
   this.grid = gridObject;
-  this.score = gameDict['score'];
-  this.over = gameDict['over'];
-  this.won = gameDict['won'];
-  this.terminated = gameDict['terminated'];
-  this.lastMoveDir = gameDict['lastMoveDir'];
+  this.score = gameDict.score;
+  this.over = gameDict.over;
+  this.won = gameDict.won;
+  this.terminated = gameDict.terminated;
+  this.lastMoveDir = gameDict.lastMoveDir;
   this.lastRandomTile = tile;
 
   if (this.lastMoveDir) {
