@@ -172,15 +172,6 @@
 
 // // This is the list of words that need to be added to the recognizer
 // // This follows the CMU dictionary format
-// var wordList = [["LEFT", "L EH F T"], ["RIGHT", "R AY T"], ["UP", "AH P"], ["DOWN", "D AW N"]];
-// // This grammar recognizes digits
-// // var grammarDigits = {numStates: 1, start: 0, end: 0, transitions: [{from: 0, to: 0, word: "ONE"},{from: 0, to: 0, word: "TWO"},{from: 0, to: 0, word: "THREE"},{from: 0, to: 0, word: "FOUR"},{from: 0, to: 0, word: "FIVE"},{from: 0, to: 0, word: "SIX"},{from: 0, to: 0, word: "SEVEN"},{from: 0, to: 0, word: "EIGHT"},{from: 0, to: 0, word: "NINE"},{from: 0, to: 0, word: "ZERO"}]};
-// // This grammar recognizes a few cities names
-// var grammarCommands = {numStates: 1, start: 0, end: 0, transitions: [{from: 0, to: 0, word: "LEFT"}, {from: 0, to: 0, word: "RIGHT"}, {from: 0, to: 0, word: "UP"}, {from: 0, to: 0, word: "DOWN"}]};
-// // This is to play with beloved or belated OSes
-// // var grammarOses = {numStates: 7, start: 0, end: 6, transitions: [{from: 0, to: 1, word: "WINDOWS"}, {from: 0, to: 1, word: "LINUX"}, {from: 0, to: 1, word: "UNIX"}, {from: 1, to: 2, word: "IS"}, {from: 2, to: 2, word: "NOT"}, {from: 2, to: 6, word: "GOOD"}, {from: 2, to: 6, word: "GREAT"}, {from: 1, to: 6, word: "ROCKS"}, {from: 1, to: 6, word: "SUCKS"}, {from: 0, to: 4, word: "MAC"}, {from: 4, to: 5, word: "O"}, {from: 5, to: 3, word: "S"}, {from: 3, to: 1, word: "X"}, {from: 6, to: 0, word: "AND"}]};
-// var grammars = [{title: "commands", g: grammarCommands}];
-// var grammarIds = [];
 
 
 // new instance of speech recognition
@@ -298,3 +289,6 @@ gameStateRef.set(templateMessage);
 // 		}
 //     });
 
+=======
+
+>>>>>>> ed61c5b6e3d8fb3f726369c71bdc8fc82f32e9f8
