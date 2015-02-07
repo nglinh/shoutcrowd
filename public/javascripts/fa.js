@@ -70,8 +70,8 @@ window.requestAnimationFrame(function () {
       button.addEventListener(this.eventTouchend, fn.bind(this));
     };
 
-    bindButtonPress(".restart-button", window.gameManager.restart);
-    bindButtonPress(".retry-button", window.gameManager.restart);
-    bindButtonPress(".keep-playing-button", window.gameManager.keepPlaying);
+    bindButtonPress(".restart-button", window.gameManager.restart());
+    bindButtonPress(".retry-button", window.gameManager.restart());
+    bindButtonPress(".keep-playing-button", window.gameManager.keepPlaying());
 
 });

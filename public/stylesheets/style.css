@@ -3747,9 +3747,11 @@ h3.comm-title {
   }
 }
 #logo{
-  position: relative;
-  widht: 100%;
+  position: absolute;
+  width: 819px;
   height: 193px;
+  top: calc(50px);
+  left: calc(50% - 430px);
   background-image: url("../images/logo horizontal.png");
   background-repeat: no-repeat;
   background-size: 50%;
