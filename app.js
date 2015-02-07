@@ -62,7 +62,7 @@ var commandStack = {
 };
 
 
-// var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
+var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
 
 // myFirebaseRef.set({
 //     command: "left"         //TODO: add game server id to be able to launch multiple instance at the same time.
@@ -99,7 +99,7 @@ var aggregateCommand = function () {
     if (commandStack[max] == 0) return;
     console.log(commandStack);
     // console.log(max);
-    io.emit('serverCommand', {command: max, choices: commandStack});
+    io.emit('serverCommand', {command: max});
     commandStack = {
         "left" : 0,
         "right" : 0,
@@ -108,9 +108,9 @@ var aggregateCommand = function () {
     };
 
     // myFirebaseRef.child("serverCommand").push(max);
-    // myFirebaseRef.set({
-    //     serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
-    // });
+    myFirebaseRef.set({
+        choices: commandStack //TODO: add game server id to be able to launch multiple instance at the same time.
+    });
 }
 
 setInterval(aggregateCommand, 3000);

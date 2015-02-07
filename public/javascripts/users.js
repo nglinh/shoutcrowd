@@ -1,4 +1,4 @@
-var firebase = new Firebase('https://fbhack.firebaseio.com'); // firebase ref
+// var firebase = new Firebase('https://fbhack.firebaseio.com'); // firebase ref
 
 var socket = io.connect('http://localhost:3000');
 
@@ -108,7 +108,6 @@ window.requestAnimationFrame(function () {
     socket.on("gameStates", function(data){
       console.log(data);
       window.gameManager.forceUpdate(data.state);
-      firebase.child("choices").set(data.choices);
     });
 
     // socket.on("serverCommand", function(data){
