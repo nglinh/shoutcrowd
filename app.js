@@ -12,9 +12,12 @@ var demo = require('./routes/demo');
 var landing = require('./routes/landing');
 var presenter = require('./routes/presenter');
 var fa = require('./routes/fa');
+var main = require('./routes/main');
 //var main= require('./routes/main');
 
 var app = express();
+var io = require('socket.io')(app);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +36,7 @@ app.use('/demo', demo);
 app.use('/landing', landing);
 app.use('/presenter', presenter);
 app.use('/fa', fa);
+app.user('/main', main);
 //app.use('/main', main);
 
 /// catch 404 and forward to error handler
@@ -56,10 +60,7 @@ var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
 // });
 
 myFirebaseRef.child('commands').on("child_added", function(command) {
-    for (var key in command.val()){
-        commandStack[command.val()]++;
-        // console.log(command.val());
-    }
+    commandStack[command.val()]++;
     // alert(snapshot.val());  // Alerts "San Francisco"
 });
 
