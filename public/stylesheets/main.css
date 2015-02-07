@@ -1116,7 +1116,8 @@ ol li {
   padding: 15px;
   width: 100%;
   height: 350px;
-  background: url(../images/background1.jpg) no-repeat center center;
+  background-color: #ecc401 !important;
+  /*background: url(../images/background1.jpg) no-repeat center center;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1144,7 +1145,7 @@ ol li {
 @media (min-width: 1200px) {
   /* line 1, ../sass/partials/_sidebar.sass */
   .sidebar {
-    width: 800px;
+    width: 1000px;
     /*width: 800px;*/
   }
 }
