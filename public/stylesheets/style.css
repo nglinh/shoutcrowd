@@ -3795,3 +3795,9 @@ h3.comm-title {
 #ack img{
   height: 194px;
 }
+#pricing ul{
+  height: 400px;
+}
+#pricing li.media{
+  height: 132px;
+}
