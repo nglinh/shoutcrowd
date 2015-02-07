@@ -36,7 +36,7 @@
             </ul>
         </div>
 
-        <div class="sidebar col-md-5 col-sm-12 " style="left: 0px;">
+        <div class="sidebar col-md-5 col-sm-12" style="left: 0px;">
 
                 <span class="menu-trigger side-writer-icon animated fadeInDown">
                     <span class="bar"></span>
@@ -53,7 +53,7 @@
             </noscript>
             <!-- end no script -->
 
-            <div class="site-info">
+            <div class="site-info hidden-xs hidden-sm hidden-md">
                 <div class="secondary-info">
                     <p><a class="btn btn-writer btn-post" href="#"><i class="entypo-doc-text"></i>Join Us Live</a> via <a href="#">http://shoutcrowd.tv</a></p>
                 </div>
@@ -179,20 +179,28 @@
                 <a href="#" class="select-categories">Select Channels</a>
             </div>
 
-            <div class="home-page-posts animated fadeIn">
-                <div class="post">
+
+
+            <!-- chat box 2 -->
+            <div class="nav home-page-posts animated fadeIn hidden-md hidden-lg" style="margin-top:10px" >
+                <input ng-model='name' type='text' id='nameInput2' style="padding-left: 5px; margin: auto; width:100%;" placeholder='Username (Optional)' onfocus="this.placeholder = ''"><br>
+                <textarea ng-model='msg' type='text' ng-keydown="addMessage($event)" id='messageInput2' style="margin-top: 10px; height:70px; resize: none; text-rendering: optimizeLegibility;
+                        -webkit-font-smoothing: antialiased; color: #333337; border-color: #ccc; padding-left: 5px; margin: auto; margin-top: 10px; width:100%;" placeholder='Hit enter to send e.g. Hack On!' onfocus="this.placeholder = ''"></textarea>
+           </div>
+
+
+            <div class="home-page-posts animated fadeIn" style="margin-top:100px; display:block; margin-bottom:20px;">
+                <div class="post" ng-repeat="msg in messages|orderBy:'date':true">
                     <section>
-                        <div class="post-preview col-xs-10  no-gutter">
-
-                            <h2><a href="http://thisisembark.com/writer/post.html">A great story never told</a></h2>
-                            <p>It was a cold December morning, as I sat out on my porch I decided today was the day. </p>
-
+                        <div class="post-preview col-xs-8  no-gutter">
+                            <h2>{{msg.body}} </h2>
                             <p class="meta">
-                                <a class="" href="http://thisisembark.com/writer/category.html">James Reddy</a> in <a class="" href="http://thisisembark.com/writer/category.html">Storytime</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 23 minute read
+                                {{msg.from}} posted <i class="link-spacer"></i> <i class="entypo-bookmark"></i>
+                                <span am-time-ago="msg.date">{{ msg.date }}</span>
                             </p>
                         </div>
-                        <div class=" col-xs-2  no-gutter">
-                            <img src="../public/images/profile-1.jpg" class="user-icon user-1" alt="user-image">
+                        <div class=" col-xs-2  no-gutter" >
+                            <img src="../public/images/poke/{{msg.url}}.png" style="border-radius : 50%; border: 2px solid #ccc;" class="user-icon user-1" alt="user-image">
                         </div>
                     </section>
                 </div>
