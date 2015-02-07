@@ -1,1 +1,6 @@
+*.idea/
+.idea
+.DS_Store
+routes/.DS_Store
+.idea/encoding.xml
 node_modules
