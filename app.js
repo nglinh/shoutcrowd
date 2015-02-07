@@ -63,18 +63,19 @@ myFirebaseRef.child('commands').on("child_added", function(command) {
 
 var aggregateCommand = function () {
     console.log("heartbeat");
-    if (commandStack.length == 0) return;
     var max = "left";
     for (var key in commandStack){
         if (commandStack[key] > commandStack[max])
             max = key;
     }
+    if (commandStack[max] == 0) return;
     commandStack = {
         "left" : 0,
         "right" : 0,
         "up" : 0,
         "down": 0
     };
+    // console.log(max);
     myFirebaseRef.child("serverCommand").set({
         command: max
     });
@@ -83,7 +84,7 @@ var aggregateCommand = function () {
     // });
 }
 
-setInterval(aggregateCommand, 2000);
+setInterval(aggregateCommand, 1000);
 
 /// error handlers
 
