@@ -197,7 +197,7 @@ setTimeout(function() {
 
 
 recognition.onresult = function(event){
-  
+
   // delve into words detected results & get the latest
   // total results detected
   // console.log(event.results);
@@ -208,19 +208,19 @@ recognition.onresult = function(event){
   var saidWord = event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ')[event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ').length-1];
 
   console.log(saidWord);
-  
+
   // // loop through links and match to word spoken
   // for (i=0; i<allLinks.length; i++) {
-    
+
   //   // get the word associated with the link
   //   var dataWord = allLinks[i].dataset.word;
-    
+
   //   // if word matches chenge the colour of the link
   //   if (saidWord.indexOf(dataWord) != -1) {
   //     allLinks[i].style.color = 'red';
   //   }
   // }
-  
+
   // // append the last word to the bottom sentence
   // console.log(saidWord);
 }
