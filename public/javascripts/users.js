@@ -26,7 +26,6 @@ var batchCommands = [];
 
 
 recognition.onresult = function(event){
-
     // delve into words detected results & get the latest
     // total results detected
     // console.log(event.results);
@@ -42,7 +41,7 @@ recognition.onresult = function(event){
       else if (["love", "laugh"].indexOf(word) != -1) word = "left";
       if (["up", "down", "right", "left"].indexOf(word) != -1) {
         console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
-        if (batchCommands.length < 7 && event.results[resultsLength-1][resultArrayLength-1].confidence > 0.6)
+        if (batchCommands.length < 7 && event.results[resultsLength-1][resultArrayLength-1].confidence > 0.8)
           batchCommands.push(word);
       }
     }
