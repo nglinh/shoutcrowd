@@ -63,6 +63,7 @@ myFirebaseRef.child('commands').on("child_added", function(command) {
 
 var aggregateCommand = function () {
     console.log("heartbeat");
+    if (commandStack.length == 0) return;
     var max = "left";
     for (var key in commandStack){
         if (commandStack[key] > commandStack[max])
