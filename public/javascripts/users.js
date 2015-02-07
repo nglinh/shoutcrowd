@@ -1,3 +1,4 @@
+var firebase = new Firebase("https://fbhack.firebaseio.com"); // firebase ref
 // new instance of speech recognition
 var recognition = new webkitSpeechRecognition();
 var shouldPickUpCommand = true;
@@ -39,7 +40,8 @@ recognition.onresult = function(event){
       if (word == "rice" || word == "write" || word == "writes" || word == "rights" || word == "rite" || word == "bright") word = "right";
       if (word == "love" || word == "laugh") word = "left";
       if (word == 'up' || word == 'down' || word == 'left' || word == 'right') {
-        // TODO JZ: Pushing the command to the server
+        // pushing the command to the server
+        firebase.child("commands").push(word);
         console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
       }
     }
@@ -52,7 +54,9 @@ recognition.onerror = function(event){
     console.log(event);
 }
 
-
-// TODO JZ: write function to wait for response from server
-// Use Firebase?
-// Use the forceUpdate function on GameManager
+// listen for changes and use the forceUpdate function on GameManage
+firebase.child("gameStates").on("value", function(snapshot){
+    GameManager.prototype.forceUpdate(snapshot.val);
+  }, function (errorObject){
+    console.log("failed to get new gameState: " + errorObject.code);
+});
