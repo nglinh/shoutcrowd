@@ -3,7 +3,7 @@
 <html ng-app="myApp" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths jPanelMenu"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Writer Theme</title>
+    <title>CrowdShout - Gaming by Crowdsourcing</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="../public/stylesheets/bootstrap.min.css">
@@ -69,149 +69,36 @@
             </div>
 
             <!-- chat box -->
-            <div class="nav" style="margin-top:2%">
-                <h5>Chat Submission</h5>
+            <div class="nav home-page-posts animated fadeIn" style="margin-top:2%" >
+                <h5>Shout Outs!</h5>
                 <span class="select-categories" style="text-align:right"><strong>Username</strong> (Optional) : </span> <input ng-model='name' type='text' id='nameInput' style="padding-left: 5px; margin-left:14px; width:200px;" placeholder='e.g. Nyancat' onfocus="this.placeholder = ''"><br>
-                <span class="select-categories" style="text-align:right;"><strong>Chat</strong> (Hit enter to send) : </span>
-                <!--<input ng-model='msg' ng-keydown="addMessage($event)"  type='text' id='messageInput'-->
-                          <!--style="padding-left: 5px; margin-top: 10px; width:200px; height:70px; resize: none; text-rendering: optimizeLegibility;-->
-                        <!---webkit-font-smoothing: antialiased; color: #333337; border-color: #ccc" onfocus="this.placeholder = ''" placeholder="Move left! Move Left">-->
-                <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a message...'>
+                <span class="select-categories" style="text-align:right; margin-top:-2px"><strong>Message</strong> (Hit enter) : </span>
+                <textarea ng-model='msg' ng-keydown="addMessage($event)"  type='text' id='messageInput'
+                          style="margin-left: 20px; padding-left: 5px; margin-top: 10px; width:200px; height:70px; resize: none; text-rendering: optimizeLegibility;
+                        -webkit-font-smoothing: antialiased; color: #333337; border-color: #ccc" onfocus="this.placeholder = ''" placeholder="Move left! Jump Right!"></textarea>
+                <!--<input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a message...'>-->
             </div>
 
             <div class="home-page-posts animated fadeIn" style="margin-top:100px">
                 <div class="post" ng-repeat="msg in messages|orderBy:'date':true">
                     <section>
                         <div class="post-preview col-xs-10  no-gutter">
-                            <p>{{msg.body}} </p>
+                            <h2>{{msg.body}} </h2>
                             <p class="meta">
-                                {{msg.from}} posted <i class="link-spacer"></i> <i class="entypo-bookmark"></i>
-                                <!--{{ msg.date }}-->
-                               {{  msg.date }}
-                                <span ng-init="publishedAt = msg.date">
-
-                                </span>
+                               {{msg.from}} posted <i class="link-spacer"></i> <i class="entypo-bookmark"></i>
+                               <span am-time-ago="msg.date">{{ msg.date }}</span>
                             </p>
                         </div>
-
-                        <div class=" col-xs-2  no-gutter">
-                            <img src="../public/images/profile-1.jpg" class="user-icon user-1" alt="user-image">
+                        <div class=" col-xs-2  no-gutter" >
+                            <img src="../public/images/poke/{{msg.url}}.png" style="border-radius : 50%; border: 2px solid #ccc;" class="user-icon user-1" alt="user-image">
                         </div>
-
                     </section>
                 </div>
-                <div class="post">
-                    <section>
-                        <div class="post-preview col-xs-10 no-gutter">
-
-                            <h2><a href="http://thisisembark.com/writer/post.html">Builing, Hacking, Creating</a></h2>
-                            <p>Is it better to start from scratch or build on someone elses work. My thoughts.</p>
-
-                            <p class="meta">
-                                <a class="" href="http://thisisembark.com/writer/category.html">Mad Hacker</a> in <a class="" href="http://thisisembark.com/writer/category.html">Easy Living</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 9 minute read
-                            </p>
-                        </div>
-
-                        <div class=" col-xs-2 no-gutter">
-                            <img src="../public/images/profile-2.jpg" class="user-icon user-1" alt="user-image">
-                        </div>
-
-                    </section>
-                </div>
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/post.html">Ten reasons why you should travel, or why the city is killing your inner creative</a></h2>-->
-                            <!--<p>About time for your next adventure. </p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">Sarah Smith</a> in <a class="" href="http://thisisembark.com/writer/category.html">Adventure</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 5 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-4.png" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/post.html">Feature List</a></h2>-->
-                            <!--<p>Wondering what is actually included? </p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">Jane Thompson</a> in <a class="" href="http://thisisembark.com/writer/category.html">Writer</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 2 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-5.png" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/post.html">About Writer</a></h2>-->
-                            <!--<p>Not another bootstrap theme </p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">John Smith</a> in <a class="" href="http://thisisembark.com/writer/category.html">Writer</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 3 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-1.jpg" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/components.html">Bootstrap Components</a></h2>-->
-                            <!--<p>How do some of the default bootstrap components looks</p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">Jane Doe</a> in <a class="" href="http://thisisembark.com/writer/category.html">Writer</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 2 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-3.jpg" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/post.html">Its not always that simple</a></h2>-->
-                            <!--<p>How many times should you ask the same questions. </p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">Tim Leen</a> in <a class="" href="http://thisisembark.com/writer/category.html">Open Roads</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 12 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-3.jpg" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
             </div><!-- Home page posts -->
 
             <div class="home-page-categories animated fadeIn hide">
                 <div class="category row">
+
                     <section>
                         <div class="category-preview col-xs-6 col-sm-4 ">
                             <h2>Easy Living</h2>
@@ -304,124 +191,14 @@
                                 <a class="" href="http://thisisembark.com/writer/category.html">James Reddy</a> in <a class="" href="http://thisisembark.com/writer/category.html">Storytime</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 23 minute read
                             </p>
                         </div>
-
                         <div class=" col-xs-2  no-gutter">
                             <img src="../public/images/profile-1.jpg" class="user-icon user-1" alt="user-image">
                         </div>
-
                     </section>
                 </div>
-                <div class="post">
-                    <section>
-                        <div class="post-preview col-xs-10 no-gutter">
-
-                            <h2><a href="http://thisisembark.com/writer/post.html">Builing, Hacking, Creating</a></h2>
-                            <p>Is it better to start from scratch or build on someone elses work. My thoughts.</p>
-
-                            <p class="meta">
-                                <a class="" href="http://thisisembark.com/writer/category.html">Mad Hacker</a> in <a class="" href="http://thisisembark.com/writer/category.html">Easy Living</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 9 minute read
-                            </p>
-                        </div>
-
-                        <div class=" col-xs-2 no-gutter">
-                            <img src="../public/images/profile-2.jpg" class="user-icon user-1" alt="user-image">
-                        </div>
-
-                    </section>
-                </div>
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/post.html">Ten reasons why you should travel, or why the city is killing your inner creative</a></h2>-->
-                            <!--<p>About time for your next adventure. </p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">Sarah Smith</a> in <a class="" href="http://thisisembark.com/writer/category.html">Adventure</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 5 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-4.png" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/post.html">Feature List</a></h2>-->
-                            <!--<p>Wondering what is actually included? </p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">Jane Thompson</a> in <a class="" href="http://thisisembark.com/writer/category.html">Writer</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 2 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-5.png" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/post.html">About Writer</a></h2>-->
-                            <!--<p>Not another bootstrap theme </p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">John Smith</a> in <a class="" href="http://thisisembark.com/writer/category.html">Writer</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 3 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-1.jpg" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/components.html">Bootstrap Components</a></h2>-->
-                            <!--<p>How do some of the default bootstrap components looks</p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">Jane Doe</a> in <a class="" href="http://thisisembark.com/writer/category.html">Writer</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 2 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-3.jpg" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
-                <!--<div class="post">-->
-                    <!--<section>-->
-                        <!--<div class="post-preview col-xs-10 no-gutter">-->
-
-                            <!--<h2><a href="http://thisisembark.com/writer/post.html">Its not always that simple</a></h2>-->
-                            <!--<p>How many times should you ask the same questions. </p>-->
-
-                            <!--<p class="meta">-->
-                                <!--<a class="" href="http://thisisembark.com/writer/category.html">Tim Leen</a> in <a class="" href="http://thisisembark.com/writer/category.html">Open Roads</a> <i class="link-spacer"></i> <i class="entypo-bookmark"></i> 12 minute read-->
-                            <!--</p>-->
-                        <!--</div>-->
-
-                        <!--<div class=" col-xs-2 no-gutter">-->
-                            <!--<img src="../public/images/profile-3.jpg" class="user-icon user-1" alt="user-image">-->
-                        <!--</div>-->
-
-                    <!--</section>-->
-                <!--</div>-->
             </div><!-- Home page posts -->
 
-            <!-- channel selection posts -->
+            <!-- channel selection possts -->
             <div class="home-page-categories animated fadeIn hide">
                 <div class="category row">
                     <section>
@@ -491,7 +268,6 @@
             <div class="home-footer">
                 <a href="https://www.firebase.com"> Powered by Firebase </a>
             </div>
-
         </div><!-- main content -->
     </div> <!--/row -->
     <!-- desktop menu -->
@@ -507,45 +283,9 @@
 <script src="../public/javascripts/jquery.jpanelmenu.min.js"></script>
 <script src="../public/javascripts/bootstrap.min.js"></script>
 <script src="../public/javascripts/main.js"></script>
-
-<script>window.jQuery || document.write('<script src="../public/javascripts/jquery-1.10.1.min.js"><\/script>')
-</script>
-
-<script>
-
-    var myApp = angular.module("myApp", ["firebase"]);
-    myApp.controller('MyController', ['$scope', '$firebase',
-        function($scope, $firebase) {
-            //CREATE A FIREBASE REFERENCE
-            var ref = new Firebase("https://firechat-fb.firebaseIO.com");
-
-            // GET MESSAGES AS AN ARRAY
-            $scope.messages = $firebase(ref).$asArray();
-
-            //ADD MESSAGE METHOD
-            $scope.addMessage = function(e) {
-
-                //LISTEN FOR RETURN KEY
-                if (e.keyCode === 13 && $scope.msg) {
-                    //ALLOW CUSTOM OR ANONYMOUS USER NAMES
-                    var name = $scope.name || 'anonymous';
+<script src="../public/javascripts/angularstuff.js"></script>
 
 
-                    //ADD TO FIREBASE
-                    $scope.messages.$add({
-                        date: Firebase.ServerValue.TIMESTAMP,
-                        from: name,
-                        body: $scope.msg
-                    });
-
-                    //RESET MESSAGE
-                    $scope.msg = "";
-                }
-            }
-        }
-    ]);
-    // scroll bottom
-    //    $("#mydiv").scrollTop($("#mydiv")[0].scrollHeight);
-</script>
+<script>window.jQuery || document.write('<script src="../public/javascripts/jquery-1.10.1.min.js"><\/script>')</script>
 </body>
 </html>
