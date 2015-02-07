@@ -55,6 +55,13 @@ var commandStack = {
     "down": 0
 };
 
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('command', function (data) {
+    console.log(data);
+  });
+});
+
 var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
 
 // myFirebaseRef.set({
