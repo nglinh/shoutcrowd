@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+  		<meta charset="UTF-8" />
+  		<title></title>
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	  	<script src="http://cdnjs.cloudflare.com/ajax/libs/annyang/1.4.0/annyang.min.js"></script>
+ 	</head>
+ 	<body>
+  		<div id="test">loading...</div>
+ 	</body>
+	<script type="text/javascript">
+		$(document).ready(function (){
+			if (annyang){
+			 	// Let's define a command.
+			 	var commands = {
+					'up': function() { alert('up!'); },
+					'down': function() { alert('down!'); },
+					'left': function() { alert('left!'); },
+					'right': function() { alert('right!'); },
+					'hello': function() { alert('Hello world!'); }
+			 	};
+
+			 	// Add our commands to annyang
+			 	annyang.addCommands(commands);
+
+				// Start listening.
+				annyang.start();
+				$("#test").text("ready");
+			}
+		}); 
+	</script>
+</html>
