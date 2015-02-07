@@ -2,7 +2,6 @@
 
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
 /*
-Theme Name:    PlanusWP
 Theme URI:     http://pixelglow.ro
 Author:        Silviu Stefu
 Author URI:    http://pixelglow.ro
@@ -687,13 +686,13 @@ a:hover {
   margin-top: 32px;
 }
 /* ==========================================================================
-   Jumbotron Section
+   Jumbotron Section FIXME
    ========================================================================== */
 .jumbotron {
   padding: 150px 0 60px;
   margin-top: 0;
   margin-bottom: 0;
-  background: transparent url('../img/header-bg.jpg') repeat top left;
+  /*background: transparent url('../../public/images/header-bg.jpg') repeat top left; */
   font-size: 1em;
   height: auto;
   overflow: hidden;
@@ -1204,6 +1203,7 @@ a:hover {
    ========================================================================== */
 #blog {
   text-align: center;
+  background: url(../../public/images/jumbotron.jpg) center center no-repeat;
   padding: 100px 0;
   -webkit-box-shadow: inset 0 4px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 0 4px 0 rgba(0, 0, 0, 0.1);
@@ -3737,10 +3737,10 @@ h3.comm-title {
   }
   .da-arrows-prev {
     left: 40%;
-    background: transparent url('../img/arrow-left.png') no-repeat top left;
+    background: transparent url('../../public/images/arrow-left.png') no-repeat top left;
   }
   .da-arrows-next {
     right: 40%;
-    background: transparent url('../img/arrow-right.png') no-repeat top left;
+    background: transparent url('../../public/images/arrow-right.png') no-repeat top left;
   }
 }
