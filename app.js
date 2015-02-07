@@ -31,6 +31,44 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+var commandStack = {
+    "left" : 0,
+    "right" : 0,
+    "up" : 0,
+    "down": 0
+};
+
+var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
+    
+// myFirebaseRef.set({
+//     command: "left"         //TODO: add game server id to be able to launch multiple instance at the same time.
+// });
+
+myFirebaseRef.on("child_added", function(command) {
+    // alert(snapshot.val());  // Alerts "San Francisco"
+    commandStack[command.val().command]++;
+});
+
+var aggregateCommand = function () {
+    var max = "left";
+    for (var key in commandStack){
+        if (commandStack[key] > commandStack[max])
+            max = key;
+    }
+    resultCommand = commandStack[max];
+    commandStack = {
+        "left" : 0,
+        "right" : 0,
+        "up" : 0,
+        "down": 0
+    };
+    myFirebaseRef.set({
+        serverCommand: resultCommand //TODO: add game server id to be able to launch multiple instance at the same time.
+    });
+}
+
+setInterval(aggregateCommand, 2000);
+
 /// error handlers
 
 // development error handler
