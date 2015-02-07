@@ -121,7 +121,7 @@ Grid.prototype.toAPIObject = function() {
   for (var i = 0; i < this.size; i++) {
     var row = apiObject[i] = [];
     for (var j = 0; j < this.size; j++) {
-      row.push(this.cells[i][j] ? this.cells[i][j].value : null);
+      row.push(this.cells[i][j] ? this.cells[i][j].value : 0);
     }
   }
 

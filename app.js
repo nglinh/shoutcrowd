@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var demo = require('./routes/demo');
 var landing = require('./routes/landing');
+var presenter = require('./routes/presenter');
 //var main= require('./routes/main');
 
 var app = express();
@@ -29,6 +30,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/demo', demo);
 app.use('/landing', landing);
+app.use('/presenter', presenter);
 //app.use('/main', main);
 
 /// catch 404 and forward to error handler
@@ -46,14 +48,17 @@ var commandStack = {
 };
 
 var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
-    
+
 // myFirebaseRef.set({
 //     command: "left"         //TODO: add game server id to be able to launch multiple instance at the same time.
 // });
 
-myFirebaseRef.child('command').on("child_added", function(command) {
+myFirebaseRef.child('commands').on("child_added", function(command) {
+    for (var key in command.val()){
+        commandStack[command.val()]++;
+        // console.log(command.val());
+    }
     // alert(snapshot.val());  // Alerts "San Francisco"
-    commandStack[command.val().command]++;
 });
 
 var aggregateCommand = function () {
@@ -63,18 +68,23 @@ var aggregateCommand = function () {
         if (commandStack[key] > commandStack[max])
             max = key;
     }
+    if (commandStack[max] == 0) return;
     commandStack = {
         "left" : 0,
         "right" : 0,
         "up" : 0,
         "down": 0
     };
-    myFirebaseRef.set({
-        serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
+    // console.log(max);
+    myFirebaseRef.child("serverCommand").set({
+        command: max
     });
+    // myFirebaseRef.set({
+    //     serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
+    // });
 }
 
-setInterval(aggregateCommand, 2000);
+setInterval(aggregateCommand, 1000);
 
 /// error handlers
 
