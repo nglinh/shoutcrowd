@@ -9,6 +9,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.lastMoveDir    = null;
   this.lastRandomTile = null;
   this.previousGrid   = null;
+  this.terminated     = false;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
