@@ -3795,3 +3795,18 @@ h3.comm-title {
 #ack img{
   height: 194px;
 }
+#pricing ul{
+  height: 400px;
+  border-radius: 4px;
+}
+#pricing li.media{
+  height: 132px;
+}
+#quote{
+  width: 810px;
+  position: absolute;
+  bottom: 150px;
+  left: calc(50% - 405px);
+  border-radius: 4px;
+  background: rgba(0,0,0,0.7);
+}

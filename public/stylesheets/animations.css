@@ -1,0 +1,55 @@
+.circle{
+	border-radius: 50%;
+	-webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in;
+	position: absolute;
+	background: -webkit-radial-gradient(#469fda, #3498db); /* Safari 5.1 to 6.0 */
+  	background: -o-radial-gradient(#469fda, #3498db); /* For Opera 11.6 to 12.0 */
+  	background: -moz-radial-gradient(#469fda, #3498db); /* For Firefox 3.6 to 15 */
+  	background: radial-gradient(#469fda, #3498db); /* Standard syntax */
+	width: 150px;
+	height: 150px;
+	left: calc(50% - 75px);
+	top: calc(50% - 75px);
+	box-shadow: 0 0 64px -32px #333333;
+}
+.circle.disappear{
+	-ms-transform: scale(0,0); /* IE 9 */
+    -webkit-transform: scale(0,0); /* Chrome, Safari, Opera */
+    transform: scale(0,0);
+}
+.circle .arrow{
+	height: 100%; 
+	width: 100%;
+	margin: auto;
+	background-image: url("../images/arrow.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+	position: relative;
+}
+.arrow.up{
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+.arrow.right{
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.arrow.down{
+	-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	transform: rotate(270deg);
+}
+.fadeout{
+	opacity: 0;
+}

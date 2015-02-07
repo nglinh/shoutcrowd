@@ -288,12 +288,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #428bca;
+  color: #ccc !important;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #2a6496;
+  color: #ddd !important;
   text-decoration: underline;
 }
 a:focus {
@@ -502,10 +502,10 @@ cite {
   color: #999;
 }
 .text-primary {
-  color: #428bca;
+  color: #fff;
 }
 a.text-primary:hover {
-  color: #3071a9;
+  color: #fff
 }
 .text-success {
   color: #3c763d;
