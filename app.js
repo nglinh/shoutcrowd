@@ -8,6 +8,8 @@ var Firebase = require('firebase');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var demo = require('./routes/demo');
+var landing = require('./routes/landing');
 
 var app = express();
 
@@ -24,6 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/demo', demo);
+app.use('/landing', landing);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
