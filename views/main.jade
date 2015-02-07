@@ -1,0 +1,351 @@
+doctype // saved from url=(0032)http://thisisembark.com/writer/#
+html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqldatabase.indexeddb.hashchange.history.draganddrop.websockets.rgba.hsla.multiplebgs.backgroundsize.borderimage.borderradius.boxshadow.textshadow.opacity.cssanimations.csscolumns.cssgradients.cssreflections.csstransforms.csstransforms3d.csstransitions.fontface.generatedcontent.video.audio.localstorage.sessionstorage.webworkers.applicationcache.svg.inlinesvg.smil.svgclippaths.jPanelMenu
+head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        |
+        meta(charset='utf-8')
+        |
+        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+        |
+        title Writer Theme
+        |
+        meta(name='description', content='')
+        |
+        meta(name='viewport', content='width=device-width')
+        |
+        link(rel='stylesheet', href='../public/stylesheets/bootstrap.min.css')
+        |
+        link(rel='stylesheet', href='../public/stylesheets/main.css')
+        |
+        script(src='https://code.jquery.com/jquery-1.11.2.min.js')
+        |
+        script(src='../public/javascripts/modernizr-2.6.2-respond-1.1.0.min.js')
+    |
+    body(data-menu-position='closed')
+        .jPanelMenu-panel(style='position: relative; left: 0px;')
+            .container.home-container
+                .row
+                    #menu
+                        ul
+                            li
+                                i.entypo-home
+                                a(href='#') Home
+                            |
+                            li
+                                i.entypo-user
+                                a(href='#') John Smith
+                            |
+                            li
+                                i.entypo-star
+                                a(href='http://thisisembark.com/writer/favorites.html') Favorites
+                            |
+                            li
+                                i.entypo-chart-area
+                                a(href='http://thisisembark.com/writer/dashboard.html') Stats
+                    |
+                    .sidebar.col-md-5.col-sm-12(style='left: 0px;')
+                        span.menu-trigger.side-writer-icon.animated.fadeInDown
+                            span.bar
+                            |
+                            span.bar
+                            |
+                            span.bar
+                        // if the user has javascript disabled they can still use the menu
+                        noscript
+                            | &lt;div class=&quot;no-js-menu&quot;&gt;
+                            | &lt;ul&gt;
+                            | &lt;li&gt;&lt;i class=&quot;entypo-home&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                            | &lt;li&gt;&lt;i class=&quot;entypo-user&quot;&gt;&lt;/i&gt;&lt;a href=&quot;#&quot;&gt;John Smith&lt;/a&gt;&lt;/li&gt;
+                            | &lt;li&gt;&lt;i class=&quot;entypo-star&quot;&gt;&lt;/i&gt;&lt;a href=&quot;favorites.html&quot;&gt;Favorites&lt;/a&gt;&lt;/li&gt;
+                            | &lt;li&gt;&lt;i class=&quot;entypo-chart-area&quot;&gt;&lt;/i&gt;&lt;a href=&quot;dashboard.html&quot;&gt;Stats&lt;/a&gt;&lt;/li&gt;
+                            | &lt;/ul&gt;
+                            | &lt;/div&gt;
+                        // end no script
+                        .site-info
+                            .primary-info
+                                h1 Writer
+                                |
+                                p
+                                    | A minimal blogging theme to put your content on show.
+                                    a(href='http://thisisembark.com/writer/post.html') Look at the features.
+                                |
+                                p Content is king
+                            |
+                            .secondary-info
+                                p
+                                    a.btn.btn-writer.btn-post(href='saved_resource.html')
+                                        i.entypo-doc-text
+                                        | Join Us
+                                    |  or
+                                    a(href='saved_resource.html') Share your story
+                    |
+                    .col-md-7.col-sm-12.col-md-offset-5.main-content(style='margin-left: 70%')
+                        .nav
+                            a.select-posts.active(href='#') Posts
+                            |
+                            a.select-categories(href='#') Categories
+                        |
+                        .home-page-posts.animated.fadeIn
+                            .post
+                                section
+                                    .post-preview.col-xs-10.no-gutter
+                                        h2
+                                            a(href='http://thisisembark.com/writer/post.html') A great story never told
+                                        |
+                                        p
+                                            | It was a cold December morning, as I sat out on my porch I decided today was the day.
+                                        |
+                                        p.meta
+                                            a(href='http://thisisembark.com/writer/category.html') James Reddy
+                                            |  in
+                                            a(href='http://thisisembark.com/writer/category.html') Storytime
+                                            |
+                                            i.link-spacer
+                                            |
+                                            i.entypo-bookmark
+                                            |  23 minute read
+                                    |
+                                    .col-xs-2.no-gutter
+                                        img.user-icon.user-1(src='../public/images/profile-1.jpg', alt='user-image')
+                            |
+                            .post
+                                section
+                                    .post-preview.col-xs-10.no-gutter
+                                        h2
+                                            a(href='http://thisisembark.com/writer/post.html') Builing, Hacking, Creating
+                                        |
+                                        p Is it better to start from scratch or build on someone elses work. My thoughts.
+                                        |
+                                        p.meta
+                                            a(href='http://thisisembark.com/writer/category.html') Mad Hacker
+                                            |  in
+                                            a(href='http://thisisembark.com/writer/category.html') Easy Living
+                                            |
+                                            i.link-spacer
+                                            |
+                                            i.entypo-bookmark
+                                            |  9 minute read
+                                    |
+                                    .col-xs-2.no-gutter
+                                        img.user-icon.user-1(src='../public/images/profile-2.jpg', alt='user-image')
+                            |
+                            .post
+                                section
+                                    .post-preview.col-xs-10.no-gutter
+                                        h2
+                                            a(href='http://thisisembark.com/writer/post.html')
+                                                | Ten reasons why you should travel, or why the city is killing your inner creative
+                                        |
+                                        p About time for your next adventure.
+                                        |
+                                        p.meta
+                                            a(href='http://thisisembark.com/writer/category.html') Sarah Smith
+                                            |  in
+                                            a(href='http://thisisembark.com/writer/category.html') Adventure
+                                            |
+                                            i.link-spacer
+                                            |
+                                            i.entypo-bookmark
+                                            |  5 minute read
+                                    |
+                                    .col-xs-2.no-gutter
+                                        img.user-icon.user-1(src='../public/images/profile-4.png', alt='user-image')
+                            |
+                            .post
+                                section
+                                    .post-preview.col-xs-10.no-gutter
+                                        h2
+                                            a(href='http://thisisembark.com/writer/post.html') Feature List
+                                        |
+                                        p Wondering what is actually included?
+                                        |
+                                        p.meta
+                                            a(href='http://thisisembark.com/writer/category.html') Jane Thompson
+                                            |  in
+                                            a(href='http://thisisembark.com/writer/category.html') Writer
+                                            |
+                                            i.link-spacer
+                                            |
+                                            i.entypo-bookmark
+                                            |  2 minute read
+                                    |
+                                    .col-xs-2.no-gutter
+                                        img.user-icon.user-1(src='../public/images/profile-5.png', alt='user-image')
+                            |
+                            .post
+                                section
+                                    .post-preview.col-xs-10.no-gutter
+                                        h2
+                                            a(href='http://thisisembark.com/writer/post.html') About Writer
+                                        |
+                                        p Not another bootstrap theme
+                                        |
+                                        p.meta
+                                            a(href='http://thisisembark.com/writer/category.html') John Smith
+                                            |  in
+                                            a(href='http://thisisembark.com/writer/category.html') Writer
+                                            |
+                                            i.link-spacer
+                                            |
+                                            i.entypo-bookmark
+                                            |  3 minute read
+                                    |
+                                    .col-xs-2.no-gutter
+                                        img.user-icon.user-1(src='../public/images/profile-1.jpg', alt='user-image')
+                            |
+                            .post
+                                section
+                                    .post-preview.col-xs-10.no-gutter
+                                        h2
+                                            a(href='http://thisisembark.com/writer/components.html') Bootstrap Components
+                                        |
+                                        p How do some of the default bootstrap components looks
+                                        |
+                                        p.meta
+                                            a(href='http://thisisembark.com/writer/category.html') Jane Doe
+                                            |  in
+                                            a(href='http://thisisembark.com/writer/category.html') Writer
+                                            |
+                                            i.link-spacer
+                                            |
+                                            i.entypo-bookmark
+                                            |  2 minute read
+                                    |
+                                    .col-xs-2.no-gutter
+                                        img.user-icon.user-1(src='../public/images/profile-3.jpg', alt='user-image')
+                            |
+                            .post
+                                section
+                                    .post-preview.col-xs-10.no-gutter
+                                        h2
+                                            a(href='http://thisisembark.com/writer/post.html') Its not always that simple
+                                        |
+                                        p How many times should you ask the same questions.
+                                        |
+                                        p.meta
+                                            a(href='http://thisisembark.com/writer/category.html') Tim Leen
+                                            |  in
+                                            a(href='http://thisisembark.com/writer/category.html') Open Roads
+                                            |
+                                            i.link-spacer
+                                            |
+                                            i.entypo-bookmark
+                                            |  12 minute read
+                                    |
+                                    .col-xs-2.no-gutter
+                                        img.user-icon.user-1(src='../public/images/profile-3.jpg', alt='user-image')
+                        // Home page posts
+                        .home-page-categories.animated.fadeIn.hide
+                            .category.row
+                                section
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Easy Living
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-2.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Adventure
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-4.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Storytime
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-6.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Open Roads
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-9.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Gaming
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-1.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 City Life
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-3.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Rave Culture
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-5.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Photography
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-7.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Animal Kingdom
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-8.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Beach
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-10.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Climbing
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-11.jpg', alt='category-image')
+                                    |
+                                    .category-preview.col-xs-6.col-sm-4
+                                        h2 Mystery
+                                        |
+                                        a(href='http://thisisembark.com/writer/category.html')
+                                            img(src='../public/images/cover-12.jpg', alt='category-image')
+                        |
+                        .home-footer
+                            a(href='http://thisisembark.com/writer/post.html')  About
+                            |
+                            i.link-spacer
+                            |
+                            a(href='http://thisisembark.com/writer/post.html')  Writer 2014
+                    // main content
+                // /row
+        #jPanelMenu-menu(style='width: 250px; z-index: -1; display: none;')
+            ul
+                li
+                    i.entypo-home
+                    a(href='#') Home
+                |
+                li
+                    i.entypo-user
+                    a(href='#') John Smith
+                |
+                li
+                    i.entypo-star
+                    a(href='http://thisisembark.com/writer/favorites.html') Favorites
+                |
+                li
+                    i.entypo-chart-area
+                    a(href='http://thisisembark.com/writer/dashboard.html') Stats
+        // /container
+        script(src='../public/javascripts/jquery.min.js')
+        |
+        script(src='../public/javascripts/bootstrap.min.js')
+        |
+        script(src='../public/javascripts/jquery.jpanelmenu.min.js')
+        |
+        script(src='../public/javascripts/main.js')
+        |
+        script(src='../public/javascripts/jquery-1.10.1.min.js')
+        style#jPanelMenu-style-master.
+            body{width:100%}
+            .jPanelMenu,body{overflow-x:hidden}
+            #jPanelMenu-menu{display:block;position:fixed;top:0;left:0;height:100%;z-index:-1;overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling:touch}.jPanelMenu-panel{position:static;left:0;top:0;z-index:2;width:100%;min-height:100%;background:rgb(255, 255, 255)}
