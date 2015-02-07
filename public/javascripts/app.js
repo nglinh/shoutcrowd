@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
- 	<head>
-  		<meta charset="UTF-8" />
-  		<title></title>
-		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-	  	<script src="http://cdnjs.cloudflare.com/ajax/libs/annyang/1.4.0/annyang.min.js"></script>
- 	</head>
- 	<body>
-  		<div id="test">loading...</div>
- 	</body>
-	<script type="text/javascript">
-		$(document).ready(function (){
+$(document).ready(function (){
 			if (annyang){
 			 	// Let's define a command.
 			 	var commands = {
@@ -26,8 +14,7 @@
 
 				// Start listening.
 				annyang.start();
-				$("#test").text("ready");
+				console.log("hey");
+				// $("#test").text("ready");
 			}
 		}); 
-	</script>
-</html>
