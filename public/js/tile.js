@@ -25,3 +25,11 @@ Tile.prototype.serialize = function () {
     value: this.value
   };
 };
+
+Tile.prototype.toAPIObject = function() {
+  return {
+    'x': this.x,
+    'y': this.y,
+    'value': this.value
+  };
+}

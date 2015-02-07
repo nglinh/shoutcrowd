@@ -6,6 +6,10 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
   this.startTiles     = 2;
 
+  this.lastMoveDir    = null;
+  this.lastRandomTile = null;
+  this.previousGrid   = null;
+
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
@@ -72,8 +76,60 @@ GameManager.prototype.addRandomTile = function () {
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
     this.grid.insertTile(tile);
+
+    this.lastRandomTile = tile;
   }
 };
+
+GameManager.prototype.relayAddTile = function () {
+  var tile = this.lastRandomTile;
+  this.grid.insertTile(tile);
+}
+
+GameManager.prototype.forceUpdate = function(gameDict) {
+  if (this.storageManager.getBestScore() < gameDict['score']) {
+    this.storageManager.setBestScore(score);
+  }
+
+  var gridObject = new Grid(this.size);
+  var cells = gameDict['cells'];
+  for (var i = 0; i < this.size; i++) {
+    for (var j = 0; j < this.size; j++) {
+      if (cells[i][j]) {
+        var tile = new Tile({x: i, y: j}, cells[i][j]);
+        gridObject.insertTile(tile);
+      }
+    }
+  }
+
+  var tile = gameDict['lastRandomTile'] ? new Tile({x: gameDict['lastRandomTile']['x'], y: gameDict['lastRandomTile']['y']}, gameDict['lastRandomTile']['value']) : null;
+  console.log(tile);
+
+  this.grid = gridObject;
+  this.score = gameDict['score'];
+  this.over = gameDict['over'];
+  this.won = gameDict['won'];
+  this.terminated = gameDict['terminated'];
+  this.lastMoveDir = gameDict['lastMoveDir'];
+  this.lastRandomTile = tile;
+
+  if (this.lastMoveDir) {
+    this.relayMove(this.lastMoveDir);
+  }
+
+  this.actuator.actuate(this.grid, {
+    score:      this.score,
+    over:       this.over,
+    won:        this.won,
+    bestScore:  this.storageManager.getBestScore(),
+    terminated: this.isGameTerminated()
+  });
+}
+
+// GameManager.prototype.toAPIObject = function() {
+//   // var gridObject = {};
+//   // for ()
+// }
 
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
@@ -127,7 +183,10 @@ GameManager.prototype.moveTile = function (tile, cell) {
 };
 
 // Move tiles on the grid in the specified direction
-GameManager.prototype.move = function (direction) {
+GameManager.prototype.move = function (direction, isRelayModeOn) {
+  // We store this state of the game for relaying purpose
+  this.previousGrid = this.grid.toAPIObject();
+
   // 0: up, 1: right, 2: down, 3: left
   var self = this;
 
@@ -180,7 +239,11 @@ GameManager.prototype.move = function (direction) {
   });
 
   if (moved) {
-    this.addRandomTile();
+    if (isRelayModeOn) {
+      this.relayAddTile();
+    } else {
+      this.addRandomTile();
+    }
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
@@ -188,7 +251,12 @@ GameManager.prototype.move = function (direction) {
 
     this.actuate();
   }
+
 };
+
+GameManager.prototype.relayMove = function(direction) {
+  this.move(direction, true);
+}
 
 // Get the vector representing the chosen direction
 GameManager.prototype.getVector = function (direction) {
@@ -269,4 +337,48 @@ GameManager.prototype.tileMatchesAvailable = function () {
 
 GameManager.prototype.positionsEqual = function (first, second) {
   return first.x === second.x && first.y === second.y;
+};
+
+GameManager.prototype.toAPIObject = function() {
+  return {
+    'cells': this.grid.toAPIObject(),
+    'score': this.score,
+    'over': this.over,
+    'won': this.won,
+    'terminated': this.terminated,
+    'lastRandomTile': this.lastRandomTile ? this.lastRandomTile.toAPIObject() : null,
+    'lastMoveDir': this.lastMoveDir ? this.lastMoveDir : null
+  }
+};
+
+GameManager.prototype.moveUp = function() {
+  this.move(0);
+};
+
+GameManager.prototype.relayMoveUp = function() {
+  this.relayMove(0);
+}
+
+GameManager.prototype.moveDown = function() {
+  this.move(2);
+};
+
+GameManager.prototype.relayMoveDown = function() {
+  this.relayMove(2);
+};
+
+GameManager.prototype.moveLeft = function() {
+  this.move(3);
+};
+
+GameManager.prototype.relayMoveLeft = function() {
+  this.relayMove(3);
+};
+
+GameManager.prototype.moveRight = function() {
+  this.move(1);
+};
+
+GameManager.prototype.relayMoveRight = function() {
+  this.relayMove(1);
 };
