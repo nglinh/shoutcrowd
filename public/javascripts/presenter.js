@@ -1,7 +1,33 @@
-// listen for changes and use the forceUpdate function on GameManage
 var firebase = new Firebase("https://fbhack.firebaseio.com");
-firebase.child("gameStates").on("value", function(snapshot){
-    GameManager.prototype.forceUpdate(snapshot.val);
-  }, function (errorObject){
-    console.log("failed to get new gameState: " + errorObject.code);
+
+window.requestAnimationFrame(function () {
+
+    window.gameManager = new GameManager(4, VoiceInputManager, HTMLActuator, LocalStorageManager);
+// listen for changes and use the forceUpdate function on GameManage
+    firebase.child("gameStates").on("value", function(snapshot){
+        console.log(snapshot.val());
+        window.gameManager.forceUpdate(snapshot.val());
+      }, function (errorObject){
+        console.log("failed to get new gameState: " + errorObject.code);
+    });
+
+    // setTimeout(function() {
+    //     window.gameManager.moveUp();
+    //     firebase.child("gameStates").set(window.gameManager.toAPIObject());
+    // }, 5000);
+
+    firebase.child("serverCommand").on("child_changed", function(command) {
+        var cmd = command.command;
+        if (cmd == "up") {
+            window.gameManager.moveUp();
+        } else if (cmd == "down") {
+            window.gameManager.moveDown();
+        } else if (cmd == "left") {
+            window.gameManager.moveLeft();
+        } else if (cmd == "right") {
+            window.gameManager.moveRight();
+        }
+        firebase.child("gameStates").set(window.gameManager.toAPIObject());
+    });
+
 });

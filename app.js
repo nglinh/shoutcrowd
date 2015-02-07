@@ -55,7 +55,7 @@ var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
 
 myFirebaseRef.child('commands').on("child_added", function(command) {
     // alert(snapshot.val());  // Alerts "San Francisco"
-    commandStack[command.val().command]++;
+    // commandStack[command.val().command]++;
 });
 
 var aggregateCommand = function () {

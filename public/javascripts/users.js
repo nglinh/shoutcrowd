@@ -1,4 +1,5 @@
-var firebase = new Firebase("https://fbhack.firebaseio.com"); // firebase ref
+var firebase = new Firebase('https://fbhack.firebaseio.com'); // firebase ref
+
 // new instance of speech recognition
 var recognition = new webkitSpeechRecognition();
 var shouldPickUpCommand = true;
@@ -13,7 +14,7 @@ setInterval(function(){
       recognition.start();
       started = true;
     }
-}, 500);
+}, 400);
 setTimeout(function() {
     setInterval((function(){
       recognition.stop();
@@ -33,7 +34,6 @@ recognition.onresult = function(event){
     // get length of latest results
     var resultArrayLength = event.results[resultsLength-1].length;
     // // // get last word detected
-    console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
     if (event.results[resultsLength-1][resultArrayLength-1].confidence > 0.5) {
       var word = event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ')[event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ').length-1];
       if (["dawn", "don", "dan", "dont", "now", "dial", "don't", "dump"].indexOf(word) != -1) word = "down";
@@ -68,7 +68,7 @@ var compressCommand = function() {
 
   //push to the server
   firebase.child("commands").push(maxCommand);
-  
+
   return maxCommand;
 }
 
@@ -81,9 +81,16 @@ recognition.onerror = function(event){
     console.log(event);
 }
 
+
+window.requestAnimationFrame(function () {
+
+    window.gameManager = new GameManager(4, VoiceInputManager, HTMLActuator, LocalStorageManager);
 // listen for changes and use the forceUpdate function on GameManage
-firebase.child("gameStates").on("value", function(snapshot){
-    GameManager.prototype.forceUpdate(snapshot.val);
-  }, function (errorObject){
-    console.log("failed to get new gameState: " + errorObject.code);
+    firebase.child("gameStates").on("value", function(snapshot){
+        console.log(snapshot.val());
+        window.gameManager.forceUpdate(snapshot.val());
+      }, function (errorObject){
+        console.log("failed to get new gameState: " + errorObject.code);
+    });
+
 });
