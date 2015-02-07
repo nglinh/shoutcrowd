@@ -36,7 +36,7 @@ app.use('/demo', demo);
 app.use('/landing', landing);
 app.use('/presenter', presenter);
 app.use('/fa', fa);
-app.user('/main', main);
+app.use('/main', main);
 //app.use('/main', main);
 
 /// catch 404 and forward to error handler
