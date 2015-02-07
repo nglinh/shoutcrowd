@@ -10,19 +10,19 @@ recognition.continuous = true;
 recognition.interimResults = true;
 recognition.start();
 
-var started = true;
-setInterval(function(){
-    if (!started) {
-      recognition.start();
-      started = true;
-    }
-}, 400);
-setTimeout(function() {
-    setInterval((function(){
-      recognition.stop();
-      started = false;
-    }, 600));
-}, 600);
+// var started = true;
+// setInterval(function(){
+//     if (!started) {
+//       recognition.start();
+//       started = true;
+//     }
+// }, 400);
+// setTimeout(function() {
+//     setInterval((function(){
+//       recognition.stop();
+//       started = false;
+//     }, 600));
+// }, 600);
 
 var batchCommands = [];
 
@@ -35,7 +35,7 @@ recognition.onresult = function(event){
     // get length of latest results
     var resultArrayLength = event.results[resultsLength-1].length;
     // // // get last word detected
-    if (event.results[resultsLength-1][resultArrayLength-1].confidence > 0.5) {
+    if (event.results[resultsLength-1][resultArrayLength-1].confidence < 0.2) {
       var word = event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ')[event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ').length-1];
       if (["dawn", "don", "dan", "dont", "now", "dial", "don't", "dump"].indexOf(word) != -1) word = "down";
       else if (["op", "app", "pup"].indexOf(word) != -1) word = "up";
@@ -43,8 +43,8 @@ recognition.onresult = function(event){
       else if (["love", "laugh"].indexOf(word) != -1) word = "left";
       if (["up", "down", "right", "left"].indexOf(word) != -1) {
         console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
-        if (batchCommands.length < 7 && event.results[resultsLength-1][resultArrayLength-1].confidence > 0.8)
-          batchCommands.push(word);
+        // if (batchCommands.length < 7 && event.results[resultsLength-1][resultArrayLength-1].confidence > 0.7)
+        batchCommands.push(word);
       }
     }
 }
@@ -78,12 +78,12 @@ var compressCommand = function() {
   //push to the server
   // firebase.child("commands").push(maxCommand);
   // console.log(maxCommand);
-  socket.emit("clientCommand", {command: maxCommand});
+  socket.emit("clientCommand", {command: maxCommand, timestamp: Date.now()});
 
   return maxCommand;
 }
 
-setInterval(compressCommand, 1500);
+setInterval(compressCommand, 1000);
 
 // console.log("AK");
 // speech error handling
@@ -106,7 +106,9 @@ window.requestAnimationFrame(function () {
     // });
 
     socket.on("gameStates", function(data){
-      window.gameManager.forceUpdate(data);
+      console.log(data);
+      window.gameManager.forceUpdate(data.state);
+      window.choices = data.choices;
     });
 
     // socket.on("serverCommand", function(data){

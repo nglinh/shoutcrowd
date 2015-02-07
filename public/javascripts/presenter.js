@@ -19,14 +19,13 @@ window.requestAnimationFrame(function () {
     // });
 
 
-    socket.on('gameStates', function (data) {
-        if (!isFullyInitialized) {
-            window.gameManager.forceUpdate(data);
-        }
-        isFullyInitialized = true;
-        socket.on('gameStates', null);
-    });
-
+    socket.emit("gameStates", {state: window.gameManager.toAPIObject(), choices: {
+        "left" : 0,
+        "right" : 0,
+        "up" : 0,
+        "down": 0
+    }});
+    
     socket.on('serverCommand', function(data) {
         var cmd = data.command;
         if (cmd == "up") {
@@ -38,7 +37,7 @@ window.requestAnimationFrame(function () {
         } else if (cmd == "right") {
             window.gameManager.moveRight();
         }
-        socket.emit("gameStates", window.gameManager.toAPIObject());
+        socket.emit("gameStates", {state: window.gameManager.toAPIObject(), choices : data.choices});
     });
 
     // firebase.child("serverCommand").on("child_added", function(command) {
@@ -64,9 +63,14 @@ window.requestAnimationFrame(function () {
     };
 
     bindButtonPress(".restart-button", function() {
-      window.gameManager.restart();
-      // firebase.child("gameStates").set(window.gameManager.toAPIObject());
-      socket.emit("gameStates", window.gameManager.toAPIObject());
+        window.gameManager.restart();
+        // firebase.child("gameStates").set(window.gameManager.toAPIObject());
+        socket.emit("gameStates", {state: window.gameManager.toAPIObject(), choices: {
+        "left" : 0,
+        "right" : 0,
+        "up" : 0,
+        "down": 0
+        }});
     });
 
 });
