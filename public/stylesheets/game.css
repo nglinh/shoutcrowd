@@ -47,6 +47,7 @@ h1.title {
     top: -50px;
     opacity: 0; } }
 .scores-container {
+  margin-top: 15px;
   float: right;
   text-align: right; }
 

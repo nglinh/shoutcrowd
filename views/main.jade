@@ -135,6 +135,8 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
                                         | Join Us Live
                                     | via
                                     a(href='#')  http://shoutcrowd.tv
+                    .col-lg-12(style='margin-left: 85%')
+                           <img src="images/logo horizontal.png" width="300px" style="margin-left:40px; margin-top:40px;">
                     .col-lg-7.col-lg-offset-5.main-content.hidden-md.hidden-sm.hidden-xs(style='margin-left: 85%')
                         .nav
                             a.select-posts.active(href='#') Live Comments
@@ -156,16 +158,15 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
                         .home-page-posts.animated.fadeIn(style='margin-top:100px')
                             .post(ng-repeat="msg in messages|orderBy:'date':true")
                                 section
-                                    .post-preview.col-xs-10.no-gutter
-                                        h2 {{msg.body}}
-                                        p.meta
-                                            | {{msg.from}} posted
-                                            i.link-spacer
-                                            i.entypo-clock
-                                            span(am-time-ago='msg.date') {{ msg.date }}
                                     .col-xs-2.no-gutter
-                                        img.user-icon.user-1(src='images/poke/{{msg.url}}.png', style='border-radius : 50%; border: 2px solid #ccc;', alt='user-image')
-                        // Home page posts
+                                    img.user-icon.user-1(src='images/poke/{{msg.url}}.png', style='border-radius : 50%; border: 2px solid #ccc;', alt='user-image')
+                                    .post-preview.col-xs-10.no-gutter
+                                            h2 {{msg.body}}
+                                            p.meta
+                                                | {{msg.from}} posted
+                                                i.link-spacer
+                                                i.entypo-clock
+                                                span(am-time-ago='msg.date') {{ msg.date }}// Home page posts
                         .home-page-categories.animated.fadeIn.hide
                             .category.row
                                 section
@@ -222,6 +223,8 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
                         .home-page-posts.animated.fadeIn(style='margin-top:100px; display:block; margin-bottom:20px;')
                             .post(ng-repeat="msg in messages|orderBy:'date':true")
                                 section
+                                    .col-xs-2.no-gutter
+                                        img.user-icon.user-1(src='images/poke/{{msg.url}}.png', style='border-radius : 50%; border: 2px solid #ccc;', alt='user-image')
                                     .post-preview.col-xs-8.no-gutter
                                         h2 {{msg.body}}
                                         p.meta
@@ -229,9 +232,7 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
                                             i.link-spacer
                                             i.entypo-clock
                                             span(am-time-ago='msg.date') {{ msg.date }}
-                                    .col-xs-2.no-gutter
-                                        img.user-icon.user-1(src='images/poke/{{msg.url}}.png', style='border-radius : 50%; border: 2px solid #ccc;', alt='user-image')
-                        // Home page posts
+                                        // Home page posts
                         // channel selection possts
                         .home-page-categories.animated.fadeIn.hide
                             .category.row
