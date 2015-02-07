@@ -48,6 +48,7 @@ recognition.onresult = function(event){
 }
 
 var compressCommand = function() {
+  if (batchCommands.length == 0) return;
   batchCommands = batchCommands.sort();
   var i;
   var maxCnt = 0;

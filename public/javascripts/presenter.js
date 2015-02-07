@@ -16,8 +16,9 @@ window.requestAnimationFrame(function () {
     //     firebase.child("gameStates").set(window.gameManager.toAPIObject());
     // }, 5000);
 
-    firebase.child("serverCommand").on("child_changed", function(command) {
-        var cmd = command.command;
+    firebase.child("serverCommand").on("value", function(command) {
+        // console.log(command.val().command);
+        var cmd = command.val().command;
         if (cmd == "up") {
             window.gameManager.moveUp();
         } else if (cmd == "down") {
