@@ -20,6 +20,8 @@ setTimeout(function() {
     }, 600));
 }, 600);
 
+var batchCommands = [];
+
 
 recognition.onresult = function(event){
 
@@ -34,16 +36,42 @@ recognition.onresult = function(event){
     if (event.results[resultsLength-1][resultArrayLength-1].confidence > 0.5) {
       var word = event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ')[event.results[resultsLength-1][resultArrayLength-1].transcript.split(' ').length-1];
 
-      if (word == "dawn" || word == "don" || word == "dan" || word == "dont" || word == "now" || word == "dial" || word == "don't" || word == "dump") word = "down";
-      if (word == "op" || word == "app" || word == "pup") word = "up";
-      if (word == "rice" || word == "write" || word == "writes" || word == "rights" || word == "rite" || word == "bright") word = "right";
-      if (word == "love" || word == "laugh") word = "left";
-      if (word == 'up' || word == 'down' || word == 'left' || word == 'right') {
+      if (["dawn", "don", "dan", "dont", "now", "dial", "don't", "dump"].indexOf(word) != -1) word = "down";
+      else if (["op", "app", "pup"].indexOf(word) != -1) word = "up";
+      else if (["rice", "write", "writes", "rights", "rite", "bright"].indexOf(word) != -1) word = "right";
+      else if (["love", "laugh"].indexOf(word) != -1) word = "left";
+      if (["up", "down", "right", "left"].indexOf(word) != -1) {
         // TODO JZ: Pushing the command to the server
         console.log(word + " --- " + event.results[resultsLength-1][resultArrayLength-1].confidence);
       }
+      batchCommands.push(word);
     }
 }
+
+var compressCommand = function() {
+  batchCommands = batchCommands.sort();
+  var i;
+  var maxCnt = 0;
+  var cnt = 0;
+  var maxCommand = batchCommands[0];
+  for (var i = 0; i < batchCommands.length; i++){
+    if (i == 0 || batchCommands[i] != batchCommands[i-1]){
+      cnt = 1;
+    }else {
+      cnt++;
+    }
+    if (cnt > maxCnt){
+      maxCnt = cnt;
+      maxCommand = batchCommands[i];
+    }
+  }
+  batchCommands = [];
+  //TODO: logic to send to firebase
+  
+  return maxCommand;
+}
+
+setInterval(compressCommand, 1000);
 
 // console.log("AK");
 // speech error handling
