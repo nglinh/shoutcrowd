@@ -187,6 +187,7 @@ GameManager.prototype.moveTile = function (tile, cell) {
 GameManager.prototype.move = function (direction, isRelayModeOn) {
   // We store this state of the game for relaying purpose
   this.previousGrid = this.grid.toAPIObject();
+  this.lastMoveDir = direction;
 
   // 0: up, 1: right, 2: down, 3: left
   var self = this;

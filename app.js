@@ -13,13 +13,17 @@ var landing = require('./routes/landing');
 var presenter = require('./routes/presenter');
 var fa = require('./routes/fa');
 var main = require('./routes/main');
+var home = require('./routes/home');
+
 //var main= require('./routes/main');
 
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
+var state;
 
+server.listen(3000);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,6 +43,8 @@ app.use('/landing', landing);
 app.use('/presenter', presenter);
 app.use('/fa', fa);
 app.use('/main', main);
+app.use('/home', home);
+
 //app.use('/main', main);
 
 /// catch 404 and forward to error handler
@@ -55,46 +61,67 @@ var commandStack = {
     "down": 0
 };
 
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('command', function (data) {
-    console.log(data);
-  });
-});
 
-var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
+// var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
 
 // myFirebaseRef.set({
 //     command: "left"         //TODO: add game server id to be able to launch multiple instance at the same time.
 // });
 
-myFirebaseRef.child('commands').on("child_added", function(command) {
-    commandStack[command.val()]++;
-    // alert(snapshot.val());  // Alerts "San Francisco"
+// myFirebaseRef.child('commands').on("child_added", function(command) {
+//     commandStack[command.val()]++;
+//     // alert(snapshot.val());  // Alerts "San Francisco"
+// });
+
+// io.on('connection', function (io) {
+//     io.emit('news', { hello: 'world' });
+// });
+
+io.on('connection', function(socket){
+    socket.emit('gameStates', state);
+    socket.on('clientCommand', function (data) {
+        commandStack[data.command]++;
+    });
+    var aggregateCommand = function () {
+        console.log("heartbeat");
+        var max = "left";
+        for (var key in commandStack){
+            if (commandStack[key] > commandStack[max])
+                max = key;
+        }
+        if (commandStack[max] == 0) return;
+        commandStack = {
+            "left" : 0,
+            "right" : 0,
+            "up" : 0,
+            "down": 0
+        };
+        // console.log(max);
+
+        socket.broadcast.emit('serverCommand', {command: max});
+
+        // myFirebaseRef.child("serverCommand").push(max);
+        // myFirebaseRef.set({
+        //     serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
+        // });
+    }
+
+    setInterval(aggregateCommand, 2000);  
+
+    socket.on('gameStates', function(data) {
+        state = data;
+        socket.broadcast.emit('gameStates', data);
+    });
 });
 
-var aggregateCommand = function () {
-    console.log("heartbeat");
-    var max = "left";
-    for (var key in commandStack){
-        if (commandStack[key] > commandStack[max])
-            max = key;
-    }
-    if (commandStack[max] == 0) return;
-    commandStack = {
-        "left" : 0,
-        "right" : 0,
-        "up" : 0,
-        "down": 0
-    };
-    // console.log(max);
-    myFirebaseRef.child("serverCommand").push(max);
-    // myFirebaseRef.set({
-    //     serverCommand: max //TODO: add game server id to be able to launch multiple instance at the same time.
-    // });
-}
 
-setInterval(aggregateCommand, 1000);
+// io.on('gameStates', function(data) {
+//     io.broadcast.emit(data);
+//     console.log(data);
+// });
+
+
+
 
 /// error handlers
 

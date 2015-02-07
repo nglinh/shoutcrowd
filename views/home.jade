@@ -1,0 +1,163 @@
+doctype html
+html(lang='en')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='shortcut icon', href='http://www.thepetedesign.com/demos/flat-ui-startup/demo/images/favicon.ico')
+    title Flat Startup Bootstrap Theme by The Pete Design
+    // Bootstrap core CSS
+    link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='stylesheets/theme.min.css')
+    link(rel='stylesheet', href='stylesheets/style.css')
+    link(rel='stylesheet', href='stylesheets/animate.css')
+    script(src='javascripts/html5shiv.js')
+    script(src='javascripts/respond.min.js')
+  body.js
+    // Main component for a primary marketing message or call to action
+    #top.jumbotron
+      .fus-bg
+        #logo
+      .container
+        .fus-pitch
+          a#btn-play(href='http://www.thepetedesign.com/flatui-startup/demo#') Play now!
+          .fus-call-to-action
+    #feature.fus-section.fus-feature.fus-white-bg
+      .container
+        .fus-section-header
+          h3 Gaming powered by your voice
+          h4 At shoutcrowd, your collective voices power the favorite games of our generation
+        ul.nav.nav-tabs.fus-tabs
+          li.active
+            a(href='http://www.thepetedesign.com/flatui-startup/demo#feature1', data-toggle='tab')
+              span.glyphicon.glyphicon-time
+              span.fus-subtitle Vocal Real-Time™
+          li
+            a(href='http://www.thepetedesign.com/flatui-startup/demo#feature2', data-toggle='tab')
+              span.glyphicon.glyphicon-new-window
+              span.fus-subtitle Web optimized
+          li
+            a(href='http://www.thepetedesign.com/flatui-startup/demo#feature3', data-toggle='tab')
+              span.glyphicon.glyphicon-phone
+              span.fus-subtitle Mobile Friendly
+        .tab-content.fus-tab-content
+          #feature1.tab-pane.active
+            .row
+              .col-md-6
+                .fus-tab-center.animated.fadeIn
+                  .fus-header
+                    h3 Vocal Real-Time™ Gaming
+                    h4 Shoutcrowd brings real-time gaming to a whole new level
+                  p
+                    | This is not just another real-time gaming platform. Here at shoutcrowd, we embody the philosophies that the whole is more than the sum of its parts. As a shoutcrowd player, you take part in a collective decision process with millions of others. However there is a caveat because we believe that creativity always loves constraint. The biggest novelty of shoutcrowd lies in our unique rules of engagement — your voice. We call it, Vocal Real-Time™ Gaming (VRTG). Welcome to the future of boisterous gaming with the crowd!
+                  a.btn.btn-lg(href='#top') Play now!
+              .col-md-6.fus-photo
+                a.animated.bounceInRight(href='')
+                  img(src='images/placeholder1.png', alt='Shoutcrowd')
+          #feature2.tab-pane
+            .row
+              .col-md-6.fus-photo
+                a.animated.bounceInLeft(href='http://www.thepetedesign.com/flatui-startup/demo#', target='_blank')
+                  img(src='images/placeholder2.png', alt='Shoutcrowd')
+              .col-md-6
+                .fus-tab-center.animated.fadeIn
+                  .fus-header
+                    h3 Web Optimized
+                    h4 Shoutcrowd is optimized for the web
+                  p
+                    | Ok you've probably figured this out by now but we're gonna say it anyway: Shoutcrowd is optimized for the web and by that we mean it's only available online because where else would you find millions of other players willing to scream with you? It's a masterpeice crafted from the finest internets and oh, make sure your computer has a working microphone if you wanna join in the fun!
+                  a.btn.btn-lg(href='#top') Play now!
+          #feature3.tab-pane
+            .row
+              .col-md-6
+                .fus-tab-center.animated.fadeIn
+                  .fus-header
+                    h3 Mobile Friendly
+                    h4 Yes it works on your smartphone!
+                  p
+                    | Shoutcrowd is also mobile-friendly because we understand your needs to play on-the-go. That is a basic human right and we recognize that. You're very welcome!
+                  a.btn.btn-lg(href='#top') Play now!
+              .col-md-6.fus-photo
+                a.animated.bounceInRight(href='http://www.thepetedesign.com/flatui-startup/demo#', target='_blank')
+                  img(src='images/placeholder3.png', alt='Shoutcrowd')
+    #pricing.fus-section.fus-pricing
+      .fus-overlay
+      .container
+        .fus-section-header
+          h3 The Shoutcrowd team
+          h4 A tribute to Shoutcrowd's developer heroes!
+        .row.fus-pricing-table
+          .col-md-3.fus-notfocus
+            ul.media-list.pull-right
+              li.fus-list-header
+                p Steven Nguyen
+              li#steven.dp
+              li.media
+                .media-body
+                  h4.media-heading Backend rigger
+                  p.media-text
+                    | Steven is our chief architect and he drops the logic bombs that blows our project into proportion.
+              li.media
+                a.btn.btn-primary.btn-lg.btn-block(href='https://www.facebook.com/trunga0') Facebook
+          .col-md-3.fus-notfocus
+            ul.media-list.pull-right
+              li.fus-list-header
+                p Linh Hien
+              li#linh.dp
+              li.media
+                .media-body
+                  h4.media-heading Backend rigger
+                  p.media-text
+                    | As the brainchild of the project, Linh ensures that all ideas are filtered through him and converted into cold hard code.
+              li.media
+                a.btn.btn-primary.btn-lg.btn-block(href='https://www.facebook.com/linh.h.nguyen.9') Facebook
+          .col-md-3.fus-notfocus
+            ul.media-list.pull-right
+              li.fus-list-header
+                p Stewart Huang
+              li#stewart.dp
+              li.media
+                .media-body
+                  h4.media-heading Frontend Swashbuckler
+                  p.media-text
+                    | Stewart is a fashion consultant for user interfaces and user experience domain. He also brought a blanket to the hackathon.
+              li.media
+                a.btn.btn-primary.btn-lg.btn-block(href='https://www.facebook.com/served.stewed') Facebook
+          .col-md-3.fus-notfocus
+            ul.media-list.pull-right
+              li.fus-list-header
+                p Jin Zhe
+              li#jin.dp
+              li.media
+                .media-body
+                  h4.media-heading Frontend Swashbuckler
+                  p.media-text
+                    | As a former farmer, Jin injects swag into everything he touches. No CSS is spared a chance.
+              li.media
+                a.btn.btn-primary.btn-lg.btn-block(href='https://www.facebook.com/spyrant') Facebook
+    #seen-on.fus-section.fus-seen-on.fus-white-bg
+      .container
+        .fus-section-header
+          h3 Project Acknowledgements
+          h4
+            | This project would not have been possible without Facebook's event sponsorship and also NUS which actually gave us an education  extending beyond the context of Singapore to Tel Alviv and also Silicon Valley.
+        #ack.fus-as-seen
+          a(href='http://www.comp.nus.edu.sg/', target='_blank')
+            img(src='images/soc.jpg')
+          a(href='http://www.overseas.nus.edu.sg/', target='_blank')
+            img(src='images/noc.jpg')
+          a(href='www.facebook.com', target='_blank')
+            img(src='images/facebook.png')
+    footer.fus-section
+      .fus-overlay
+      .container
+        .credit
+          a.scrollto(href='http://www.twitch.tv/') As seen on twitch
+    script(src='javascripts/jquery-1.11.1.min.js')
+    script(src='javascripts/bootstrap.js')
+    script(src='javascripts/theme.min.js')
+    script(src='javascripts/jquery.zoom-scroller.js')
+    // Google Analytics

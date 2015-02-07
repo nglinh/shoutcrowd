@@ -1,4 +1,6 @@
-var firebase = new Firebase('https://fbhack.firebaseio.com'); // firebase ref
+// var firebase = new Firebase('https://fbhack.firebaseio.com'); // firebase ref
+
+var socket = io.connect('http://localhost:3000');
 
 // new instance of speech recognition
 var recognition = new webkitSpeechRecognition();
@@ -74,7 +76,9 @@ var compressCommand = function() {
   commandCnt = batchCommands.length;
 
   //push to the server
-  firebase.child("commands").push(maxCommand);
+  // firebase.child("commands").push(maxCommand);
+  // console.log(maxCommand);
+  socket.emit("clientCommand", {command: maxCommand});
 
   return maxCommand;
 }
@@ -92,12 +96,21 @@ recognition.onerror = function(event){
 window.requestAnimationFrame(function () {
 
     window.gameManager = new GameManager(4, VoiceInputManager, HTMLActuator, LocalStorageManager);
+
 // listen for changes and use the forceUpdate function on GameManage
-    firebase.child("gameStates").on("value", function(snapshot){
-        console.log(snapshot.val());
-        window.gameManager.forceUpdate(snapshot.val());
-      }, function (errorObject){
-        console.log("failed to get new gameState: " + errorObject.code);
+    // firebase.child("gameStates").on("value", function(snapshot){
+    //     console.log(snapshot.val());
+    //     window.gameManager.forceUpdate(snapshot.val());
+    //   }, function (errorObject){
+    //     console.log("failed to get new gameState: " + errorObject.code);
+    // });
+
+    socket.on("gameStates", function(data){
+      window.gameManager.forceUpdate(data);
     });
+
+    // socket.on("serverCommand", function(data){
+    //   console.log(data);
+    // });
 
 });

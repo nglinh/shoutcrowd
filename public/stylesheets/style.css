@@ -3746,3 +3746,58 @@ h3.comm-title {
     background: transparent url('../../public/images/arrow-right.png') no-repeat top left;
   }
 }
+#logo{
+  position: absolute;
+  width: 819px;
+  height: 193px;
+  top: calc(50px);
+  left: calc(50% - 430px);
+  background-image: url("../images/logo horizontal.png");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  text-align: center;
+}
+#btn-play{
+  display:block;
+  background-color:#f1c40f;
+  color: #FFFFFF;
+  padding: 16px;
+  border-radius:4px;
+  width:250px;
+  text-align:center;
+  margin:auto;
+  font-size: 30px;
+}
+#btn-play:hover{
+  background-color: #f68c1e;
+}
+.dp{
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+  margin: auto;
+}
+#steven{
+  background-image: url("../images/steven.jpg");
+}
+#linh{
+  background-image: url("../images/linh.jpg");
+}
+#jin{
+  background-image: url("../images/jin.png");
+}
+#stewart{
+  background-image: url("../images/stewart.jpg");
+}
+#ack img{
+  height: 194px;
+}
+#pricing ul{
+  height: 400px;
+}
+#pricing li.media{
+  height: 132px;
+}
