@@ -30,7 +30,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/demo', demo);
 app.use('/landing', landing);
-app.user('/presenter', presenter);
+app.use('/presenter', presenter);
 //app.use('/main', main);
 
 /// catch 404 and forward to error handler
@@ -48,7 +48,7 @@ var commandStack = {
 };
 
 var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
-    
+
 // myFirebaseRef.set({
 //     command: "left"         //TODO: add game server id to be able to launch multiple instance at the same time.
 // });
