@@ -689,14 +689,16 @@ a:hover {
    Jumbotron Section FIXME
    ========================================================================== */
 .jumbotron {
-  padding: 150px 0 60px;
-  margin-top: 0;
-  margin-bottom: 0;
+  border-radius:0;height:750px;padding-top:80px;margin:0;width:100%;position:relative
+  /**/
+  /*padding: 150px 0 60px;*/
+  /*margin-top: 0;*/
+  /*margin-bottom: 0;*/
   /*background: transparent url('../../public/images/header-bg.jpg') repeat top left; */
-  font-size: 1em;
-  height: auto;
-  overflow: hidden;
-  background-attachment: scroll !important;
+  /*font-size: 1em;*/
+  /*height: auto;*/
+  /*overflow: hidden;*/
+  /*background-attachment: scroll !important;*/
 }
 .jumbotron .container {
   text-align: center;
