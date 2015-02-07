@@ -1,38 +1,24 @@
-doctype // saved from url=(0032)http://thisisembark.com/writer/#
+doctype html
 html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqldatabase.indexeddb.hashchange.history.draganddrop.websockets.rgba.hsla.multiplebgs.backgroundsize.borderimage.borderradius.boxshadow.textshadow.opacity.cssanimations.csscolumns.cssgradients.cssreflections.csstransforms.csstransforms3d.csstransitions.fontface.generatedcontent.video.audio.localstorage.sessionstorage.webworkers.applicationcache.svg.inlinesvg.smil.svgclippaths.jPanelMenu(ng-app='myApp')
-head
-    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
-        |
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
         meta(charset='utf-8')
-        |
         meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-        |
         title CrowdShout - Gaming by Crowdsourcing
-        |
         meta(name='description', content='')
-        |
         meta(name='viewport', content='width=device-width')
-        |
-        link(rel='stylesheet', href='../public/stylesheets/bootstrap.min.css')
-        |
-        link(rel='stylesheet', href='../public/stylesheets/main.css')
-        |
-        script(src='../public/javascripts/modernizr-2.6.2-respond-1.1.0.min.js')
+        link(rel='stylesheet', href='stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='stylesheets/main.css')
+        script(src='javascripts/modernizr-2.6.2-respond-1.1.0.min.js')
         // angular libraries
         script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js')
-        |
-        script(src='https://cdn.firebase.com/js/client/2.0.4/firebase.js')
-        |
+        script(src='javascripts/firebase.min.js')
         script(src='https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js')
-        |
-        script(src='../node_modules/moment/moment.js')
-        |
-        script(src='../node_modules/angular-moment/angular-moment.js')
-        |
-        link(rel='stylesheet', href='../public/stylesheets/example.css')
-        // <script src="../public/javascripts/chatlogic.js"></script>
+        script(src='javascripts/moment.js')
+        script(src='javascripts/angular-moment.js')
+        link(rel='stylesheet', href='stylesheets/example.css')
+        script(src='javascripts/chatlogic.js')
     body(data-menu-position='closed', ng-controller='MyController')
-        script(src='../public/javascripts/chatlogic.js')
         .jPanelMenu-panel(style='position: relative; left: 0px;')
             .container.home-container
                 .row
@@ -42,40 +28,31 @@ head
                             li
                                 i.entypo-home
                                 a(href='#') Home
-                            |
                             li
                                 i.entypo-star
                                 a(href='#') 2048 (Game)
-                            |
                             li
                                 i.entypo-star
                                 a(href='#') Supermario (Game)
-                            |
                             li
                                 i.entypo-user
                                 a(href='#') Leadership Board
-                    |
                     .sidebar.col-md-5.col-sm-12(style='left: 0px;')
                         span.menu-trigger.side-writer-icon.animated.fadeInDown
                             span.bar
-                            |
                             span.bar
-                            |
                             span.bar
                         // if the user has javascript disabled they can still use the menu
                         noscript
                             li
                                 i.entypo-home
                                 a(href='#') Home
-                            |
                             li
                                 i.entypo-star
                                 a(href='#') 2048 (Game)
-                            |
                             li
                                 i.entypo-star
                                 a(href='#') Supermario (Game)
-                            |
                             li
                                 i.entypo-board
                                 a(href='#') Leadership Board
@@ -87,106 +64,77 @@ head
                                         i.entypo-doc-text
                                         | Join Us Live
                                     | via
-                                    a(href='#') http://shoutcrowd.tv
-                    |
+                                    a(href='#')  http://shoutcrowd.tv
                     .col-lg-7.col-lg-offset-5.main-content.hidden-md.hidden-sm.hidden-xs(style='margin-left: 67%')
                         .nav
                             a.select-posts.active(href='#') Live Comments
-                            |
                             a.select-categories(href='#') Select Channels
                         // chat box
                         .nav.home-page-posts.animated.fadeIn(style='margin-top:2%')
                             h5 Shout Outs!
-                            |
                             span.select-categories(style='text-align:right')
                                 strong Username
                                 | (Optional) :
-                            |
                             input#nameInput(ng-model='name', type='text', style='padding-left: 5px; margin-left:14px; width:200px;', placeholder='e.g. Nyancat', onfocus="this.placeholder = ''")
                             br
-                            |
                             span.select-categories(style='text-align:right; margin-top:-2px')
                                 strong Message
                                 | (Hit enter) :
-                            |
                             textarea#messageInput(ng-model='msg', ng-keydown='addMessage($event)', type='text', style='margin-left: 20px; padding-left: 5px; margin-top: 10px; width:200px; height:70px; resize: none; text-rendering: optimizeLegibility;\
-                                           -webkit-font-smoothing: antialiased; color: #333337; border-color: #ccc', onfocus="this.placeholder = ''", placeholder='Move left! Jump Right!')
+                                       -webkit-font-smoothing: antialiased; color: #333337; border-color: #ccc', onfocus="this.placeholder = ''", placeholder='Move left! Jump Right!')
                             // <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a message...'>
-                        |
                         .home-page-posts.animated.fadeIn(style='margin-top:100px')
                             .post(ng-repeat="msg in messages|orderBy:'date':true")
                                 section
                                     .post-preview.col-xs-10.no-gutter
                                         h2 {{msg.body}}
-                                        |
                                         p.meta
                                             | {{msg.from}} posted
                                             i.link-spacer
-                                            |
                                             i.entypo-clock
-                                            |
                                             span(am-time-ago='msg.date') {{ msg.date }}
-                                    |
                                     .col-xs-2.no-gutter
-                                        img.user-icon.user-1(src='../public/images/poke/{{msg.url}}.png', style='border-radius : 50%; border: 2px solid #ccc;', alt='user-image')
+                                        img.user-icon.user-1(src='images/poke/{{msg.url}}.png', style='border-radius : 50%; border: 2px solid #ccc;', alt='user-image')
                         // Home page posts
                         .home-page-categories.animated.fadeIn.hide
                             .category.row
                                 section
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 2048
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-1x.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-1x.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 PacMan Ultimate
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-3.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-3.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Legend of Zelda
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-3x.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-3x.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Pokemon Rumble
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-4.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-4.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Golden Axe
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-5.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-5.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Bubble Puzzle
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-6.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-6.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Mario Sunshine
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-7.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-7.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Metal Slug
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-8.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-8.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Angry Birds
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-9.jpg', alt='category-image')
-                        |
+                                            img(src='images/cover-9.jpg', alt='category-image')
                         .home-footer
                             a(href='https://www.firebase.com')  Powered by Firebase
                     // main content
@@ -194,32 +142,25 @@ head
                     .col-sm-12.hidden-md.hidden-lg
                         .nav
                             a.select-posts.active(href='#') Live Comments
-                            |
                             a.select-categories(href='#') Select Channels
                         // chat box 2
                         .nav.home-page-posts.animated.fadeIn.hidden-md.hidden-lg(style='margin-top:10px')
                             input#nameInput2(ng-model='name', type='text', style='padding-left: 5px; margin: auto; width:100%;', placeholder='Username (Optional)', onfocus="this.placeholder = ''")
                             br
-                            |
                             textarea#messageInput2(ng-model='msg', type='text', ng-keydown='addMessage($event)', style='margin-top: 10px; height:70px; resize: none; text-rendering: optimizeLegibility;\
-                                           -webkit-font-smoothing: antialiased; color: #333337; border-color: #ccc; padding-left: 5px; margin: auto; margin-top: 10px; width:100%;', placeholder='Hit enter to send e.g. Hack On!', onfocus="this.placeholder = ''")
-                        |
+                                       -webkit-font-smoothing: antialiased; color: #333337; border-color: #ccc; padding-left: 5px; margin: auto; margin-top: 10px; width:100%;', placeholder='Hit enter to send e.g. Hack On!', onfocus="this.placeholder = ''")
                         .home-page-posts.animated.fadeIn(style='margin-top:100px; display:block; margin-bottom:20px;')
                             .post(ng-repeat="msg in messages|orderBy:'date':true")
                                 section
                                     .post-preview.col-xs-8.no-gutter
                                         h2 {{msg.body}}
-                                        |
                                         p.meta
                                             | {{msg.from}} posted
                                             i.link-spacer
-                                            |
                                             i.entypo-clock
-                                            |
                                             span(am-time-ago='msg.date') {{ msg.date }}
-                                    |
                                     .col-xs-2.no-gutter
-                                        img.user-icon.user-1(src='../public/images/poke/{{msg.url}}.png', style='border-radius : 50%; border: 2px solid #ccc;', alt='user-image')
+                                        img.user-icon.user-1(src='images/poke/{{msg.url}}.png', style='border-radius : 50%; border: 2px solid #ccc;', alt='user-image')
                         // Home page posts
                         // channel selection possts
                         .home-page-categories.animated.fadeIn.hide
@@ -227,58 +168,40 @@ head
                                 section
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 2048
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-1x.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-1x.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 PacMan Ultimate
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-3.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-3.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Legend of Zelda
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-3x.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-3x.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Pokemon Rumble
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-4.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-4.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Golden Axe
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-5.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-5.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Bubble Puzzle
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-6.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-6.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Mario Sunshine
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-7.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-7.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Metal Slug
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-8.jpg', alt='category-image')
-                                    |
+                                            img(src='images/cover-8.jpg', alt='category-image')
                                     .category-preview.col-xs-6.col-sm-4
                                         h2 Angry Birds
-                                        |
                                         a(href='http://thisisembark.com/writer/category.html')
-                                            img(src='../public/images/cover-9.jpg', alt='category-image')
-                        |
+                                            img(src='images/cover-9.jpg', alt='category-image')
                         .home-footer
                             a(href='https://www.firebase.com')  Powered by Firebase
                     // main content
@@ -289,24 +212,21 @@ head
                 li
                     i.entypo-home
                     a(href='#') Home
-                |
                 li
                     i.entypo-star
                     a(href='#') 2048 (Game)
-                |
                 li
                     i.entypo-star
                     a(href='#') Supermario (Game)
-                |
                 li
                     i.entypo-user
                     a(href='#') Leadership Board
         // /container
-        script(src='../public/javascripts/jquery.min.js')
-        script(src='../public/javascripts/jquery.jpanelmenu.min.js')
-        script(src='../public/javascripts/bootstrap.min.js')
-        script(src='../public/javascripts/main.js')
-        script(src='../public/javascripts/angularstuff.js')
+        script(src='javascripts/jquery.min.js')
+        script(src='javascripts/jquery.jpanelmenu.min.js')
+        script(src='javascripts/bootstrap.min.js')
+        script(src='javascripts/main.js')
+        script(src='javascripts/angularstuff.js')
         script.
-            window.jQuery || document.write('<script src="../public/javascripts/jquery-1.10.1.min.js"><\\/script>')
-                             
+            window.jQuery || document.write('<script src="javascripts/jquery-1.10.1.min.js"><\\/script>')
+                         
