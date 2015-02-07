@@ -16,7 +16,9 @@ var main = require('./routes/main');
 //var main= require('./routes/main');
 
 var app = express();
-var io = require('socket.io')(app);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
 
 
 // view engine setup
