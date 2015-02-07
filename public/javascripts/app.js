@@ -236,12 +236,11 @@ recognition.onerror = function(event){
 var myFirebaseRef = new Firebase("https://fbhack.firebaseio.com/");
 
 var templateMessage = {
-	state: {
 		cells: [
-			[null, null, null, 4],
-			[null, 2, null, null],
-			[null, null, 8, null],
-			[null, 2, null, 4]
+			[0, 0, 0, 4],
+			[0, 2, 0, 0],
+			[0, 0, 8, 0],
+			[0, 2, 0, 4]
 			],
 		score: 100,
 		over: false,
@@ -249,17 +248,15 @@ var templateMessage = {
 		terminated: false,
 		lastMoveDir: 1,
 		lastRandomTile: {x: 0, y: 2, value: 2}
-		}
     };
 
 
 var templateMessage2 = {
-	state: {
 		cells: [
-			[null, null, null, 4],
-			[null, 2, null, null],
-			[null, null, 8, null],
-			[null, 2, null, 4]
+			[0, 0, 0, 4],
+			[0, 2, 0, 0],
+			[0, 0, 8, 0],
+			[0, 2, 0, 4]
 			],
 		score: 90,
 		over: false,
@@ -267,7 +264,6 @@ var templateMessage2 = {
 		terminated: false,
 		lastMoveDir: 1,
 		lastRandomTile: {x: 0, y: 2, value: 2}
-		}
     };
 
 var gameStateRef = myFirebaseRef.child("gameStates");
