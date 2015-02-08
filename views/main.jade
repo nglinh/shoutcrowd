@@ -21,7 +21,6 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
         script(src='javascripts/angular-moment.js')
         link(rel='stylesheet', href='stylesheets/example.css')
         script(src='javascripts/chatlogic.js')
-        script(src='javascripts/users.js')
 
         // /container
         script(src='javascripts/jquery.min.js')
@@ -38,16 +37,15 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
         <script src="js/bind_polyfill.js"></script>
         <script src="js/classlist_polyfill.js"></script>
         <script src="js/animframe_polyfill.js"></script>
-        <script src="js/voice_input_manager.js"></script>
         <script src="js/html_actuator.js"></script>
         <script src="js/grid.js"></script>
         <script src="js/tile.js"></script>
         <script src="js/local_storage_manager.js"></script>
         <script src="js/game_manager.js"></script>
+        <script src="js/keyboard_input_manager.js"></script>
         //- These are the two JavaScript files you must load in the HTML,
         //- The recognizer is loaded through a Web Worker
-        //- <script src="javascripts/presenter.js"></script>
-
+        script(src='javascripts/users.js')
 
 
     body(data-menu-position='closed', ng-controller='MyController')
@@ -82,9 +80,7 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
                                 .scores-container
                                     .score-container 0
                                     .best-container 0
-                            br
-                            .above-game(style='display:inline-block')
-                                a.restart-button New Game
+
                             .game-container
                                 .game-message
                                     p
@@ -129,21 +125,28 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
                                 i.entypo-board
                                 a(href='#') Leadership Board
                         // end no script
-                        .site-info.hidden-xs.hidden-sm.hidden-md(href='#', style='margin-left : 33%;')
-                            .secondary-info
-                                p
-                                .row
-                                    .col-sm-3
-                                        <img class="arrow up" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.up}}</span>
-                                    .col-sm-3
-                                        <img class="arrow down" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.down}}</span>
-                                    .col-sm-3
-                                        <img class="arrow left" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.left}}</span>
-                                    .col-sm-3
-                                        <img class="arrow right" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.right}}</span>
+                        //.site-info.hidden-xs.hidden-sm.hidden-md(href='#', style='margin-left : 33%;')
+                        //    .secondary-info
+                        //        p
+                        //        .row
+                        //            .col-sm-3
+                        //                <img class="arrow up" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.up}}</span>
+                        //            .col-sm-3
+                        //                <img class="arrow down" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.down}}</span>
+                        //            .col-sm-3
+                        //                <img class="arrow left" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.left}}</span>
+                        //            .col-sm-3
+                        //                <img class="arrow right" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.right}}</span>
 
                     .col-lg-12(style='margin-left: 85%')
                            <img src="images/logo horizontal.png" width="300px" style="margin-left:40px; margin-top:40px;">
+
+                    .row.hidden-md.hidden-xs(style='margin-left: 90%; margin-top:12%; width:300px;') <strong>Votes on Moves (Real-Time)</strong><p>
+                        .col-lg-3 <img class="arrow up" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.up}}</span>
+                        .col-lg-3 <img class="arrow down" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.down}}</span>
+                        .col-lg-3 <img class="arrow left" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.left}}</span>
+                        .col-lg-3 <img class="arrow right" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.right}}</span>
+
                     .col-lg-7.col-lg-offset-5.main-content.hidden-md.hidden-sm.hidden-xs(style='margin-left: 85%')
                         .nav
                             a.select-posts.active(href='#') Live Comments

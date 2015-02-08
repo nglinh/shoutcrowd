@@ -1,11 +1,17 @@
 var myApp = angular.module("myApp", ["firebase", "angularMoment"]);
 myApp.controller('MyController', ['$scope', '$firebase',
     function($scope, $firebase) {
-        //CREATE A FIREBASE REFERENCE
-        var ref = new Firebase("https://firechat-fb.firebaseIO.com");
+        var choicesRef = new Firebase("https://fbhack.firebaseio.com/choices");
+        var choicesSync  = $firebase(choicesRef);
+        var syncObject = choicesSync.$asObject();
 
+        syncObject.$bindTo($scope, "choices");
+
+
+        //CREATE A FIREBASE REFERENCE
+        var messageRef = new Firebase("https://firechat-fb.firebaseIO.com");
         // GET MESSAGES AS AN ARRAY
-        $scope.messages = $firebase(ref).$asArray();
+        $scope.messages = $firebase(messageRef).$asArray();
 
         //ADD MESSAGE METHOD
         $scope.addMessage = function(e) {

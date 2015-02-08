@@ -1,6 +1,6 @@
 window.requestAnimationFrame(function () {
 
-    window.gameManager = new GameManager(4, VoiceInputManager, HTMLActuator, LocalStorageManager);
+    window.gameManager = new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
 
     // new instance of speech recognition
     var recognition = new webkitSpeechRecognition();
@@ -64,14 +64,14 @@ window.requestAnimationFrame(function () {
         }
     };
 
-    var bindButtonPress = function (selector, fn) {
-      var button = document.querySelector(selector);
-      button.addEventListener("click", fn.bind(this));
-      button.addEventListener(this.eventTouchend, fn.bind(this));
-    };
+    // var bindButtonPress = function (selector, fn) {
+    //   var button = document.querySelector(selector);
+    //   // button.addEventListener("click", fn.bind(this));
+    //   // button.addEventListener(this.eventTouchend, fn.bind(this));
+    // };
 
-    bindButtonPress(".restart-button", window.gameManager.restart());
-    bindButtonPress(".retry-button", window.gameManager.restart());
-    bindButtonPress(".keep-playing-button", window.gameManager.keepPlaying());
+    // bindButtonPress(".restart-button", window.gameManager.restart());
+    // bindButtonPress(".retry-button", window.gameManager.restart());
+    // bindButtonPress(".keep-playing-button", window.gameManager.keepPlaying());
 
 });
