@@ -21,7 +21,6 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
         script(src='javascripts/angular-moment.js')
         link(rel='stylesheet', href='stylesheets/example.css')
         script(src='javascripts/chatlogic.js')
-        script(src='javascripts/users.js')
 
         // /container
         script(src='javascripts/jquery.min.js')
@@ -38,16 +37,15 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
         <script src="js/bind_polyfill.js"></script>
         <script src="js/classlist_polyfill.js"></script>
         <script src="js/animframe_polyfill.js"></script>
-        <script src="js/voice_input_manager.js"></script>
         <script src="js/html_actuator.js"></script>
         <script src="js/grid.js"></script>
         <script src="js/tile.js"></script>
         <script src="js/local_storage_manager.js"></script>
         <script src="js/game_manager.js"></script>
+        <script src="js/keyboard_input_manager.js"></script>
         //- These are the two JavaScript files you must load in the HTML,
         //- The recognizer is loaded through a Web Worker
-        //- <script src="javascripts/presenter.js"></script>
-
+        script(src='javascripts/users.js')
 
 
     body(data-menu-position='closed', ng-controller='MyController')
@@ -82,9 +80,7 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
                                 .scores-container
                                     .score-container 0
                                     .best-container 0
-                            br
-                            .above-game(style='display:inline-block')
-                                a.restart-button New Game
+
                             .game-container
                                 .game-message
                                     p

@@ -95,7 +95,7 @@ recognition.onerror = function(event){
 
 window.requestAnimationFrame(function () {
 
-    window.gameManager = new GameManager(4, VoiceInputManager, HTMLActuator, LocalStorageManager);
+    window.gameManager = new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
 
 // listen for changes and use the forceUpdate function on GameManage
     // firebase.child("gameStates").on("value", function(snapshot){
