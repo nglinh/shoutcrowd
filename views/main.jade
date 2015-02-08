@@ -9,6 +9,7 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
         meta(name='viewport', content='width=device-width')
         link(rel='stylesheet', href='stylesheets/bootstrap.min.css')
         link(rel='stylesheet', href='stylesheets/main.css')
+        link(rel='stylesheet', href='stylesheets/animations.css')
         script(src='javascripts/modernizr-2.6.2-respond-1.1.0.min.js')
         // angular libraries
         script(src='/socket.io/socket.io.js')
@@ -131,11 +132,16 @@ html.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqld
                         .site-info.hidden-xs.hidden-sm.hidden-md(href='#', style='margin-left : 33%;')
                             .secondary-info
                                 p
-                                    a.btn.btn-writer.btn-post(href='#', style='margin-right: 5px;')
-                                        i.entypo-doc-text
-                                        | Join Us Live
-                                    | via
-                                    a(href='#' style="color:#fff !important")  http://shoutcrowd.tv
+                                .row
+                                    .col-sm-3
+                                        <img class="arrow up" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.up}}</span>
+                                    .col-sm-3
+                                        <img class="arrow down" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.down}}</span>
+                                    .col-sm-3
+                                        <img class="arrow left" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.left}}</span>
+                                    .col-sm-3
+                                        <img class="arrow right" src="images/arrow.png" height="30px" style="border-radius:50%; background-color:#333; padding:6px;"> <br> <span style="color:#333; font-size:1.5em"> {{choices.right}}</span>
+
                     .col-lg-12(style='margin-left: 85%')
                            <img src="images/logo horizontal.png" width="300px" style="margin-left:40px; margin-top:40px;">
                     .col-lg-7.col-lg-offset-5.main-content.hidden-md.hidden-sm.hidden-xs(style='margin-left: 85%')
