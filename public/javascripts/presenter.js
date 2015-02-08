@@ -1,6 +1,6 @@
 // var firebase = new Firebase("https://fbhack.firebaseio.com");
 
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('http://128.199.111.123:3000');
 
 
 window.requestAnimationFrame(function () {
