@@ -100,17 +100,14 @@ var aggregateCommand = function () {
     console.log(commandStack);
     // console.log(max);
     io.emit('serverCommand', {command: max});
+    // myFirebaseRef.child("serverCommand").push(max);
+    myFirebaseRef.child("choices").set(commandStack);
     commandStack = {
         "left" : 0,
         "right" : 0,
         "up" : 0,
         "down": 0
     };
-
-    // myFirebaseRef.child("serverCommand").push(max);
-    myFirebaseRef.set({
-        choices: commandStack //TODO: add game server id to be able to launch multiple instance at the same time.
-    });
 }
 
 setInterval(aggregateCommand, 3000);
