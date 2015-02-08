@@ -27,11 +27,14 @@ myApp.controller('MyController', ['$scope', '$firebase',
 
 
 
-        //CREATE A FIREBASE REFERENCE
-        var ref2 = new Firebase("https://fbhack.firebaseio.com/choices");
+            //CREATE A FIREBASE REFERENCE
+            var ref2 = new Firebase("https://fbhack.firebaseio.com/choices");
 
-        // GET MESSAGES AS AN ARRAY
-        $scope.choices = $firebase(ref2).$asArray();
+            // GET MESSAGES AS AN ARRAY
+            $scope.choices = $firebase(ref2).$asArray();
+
+
+            console.log($scope.choices);
 
 
     }
